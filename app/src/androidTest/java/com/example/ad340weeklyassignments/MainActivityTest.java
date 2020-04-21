@@ -30,6 +30,6 @@ public class MainActivityTest {
     @Test
     public void hasNameOnScreen() {
         onView(withId(R.id.name))
-                .check(matches(withText("kevin pettinger")));
+                .check(matches(withText("Pettinger, Kevin")));
     }
 }
