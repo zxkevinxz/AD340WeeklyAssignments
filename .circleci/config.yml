@@ -218,6 +218,7 @@ jobs:
 workflows:
   version: 2
   workflow:
+    jobs:
       - build_debug
       - build_release
       - test_unit
