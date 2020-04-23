@@ -7,22 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class SubmitFail extends AppCompatActivity {
+public class Results extends AppCompatActivity {
+
+    private static final String TAG = Results.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_submit_fail);
-        TextView failMsg = findViewById(R.id.failMsg);
+        setContentView(R.layout.activity_results);
+
+        TextView results = findViewById(R.id.results);
         Intent intent = getIntent();
 
-        String msg = intent.getStringExtra(Constants.FAIL_MSGS);
+        results.setText(intent.getStringExtra("submitResults"));
 
-        failMsg.setText(msg);
     }
 
     public void goToMain(View view) {
-        Intent intent = new Intent(SubmitFail.this, MainActivity.class);
+        Intent intent = new Intent(Results.this, MainActivity.class);
         startActivity(intent);
     }
 }

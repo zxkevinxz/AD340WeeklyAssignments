@@ -85,40 +85,31 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         else if (checkDOB(bday) < 18)
             errors.add(Constants.KEY_DOB);
 
-
-        if (errors.size() > 0)
-            goToFail(errors);
-        else
-            goToSuccess();
+        goToResults(errors);
 
     }
 
-    private void goToSuccess() {
-        Intent intent = new Intent(MainActivity.this, SubmitSuccess.class);
-        Bundle userInfo = new Bundle();
-        userInfo.putString(Constants.KEY_NAME, name.getText().toString());
-        userInfo.putString(Constants.KEY_EMAIL, email.getText().toString());
-        userInfo.putString(Constants.KEY_USERNAME, username.getText().toString());
-        userInfo.putString(Constants.KEY_DOB, dob.getText().toString());
-        intent.putExtras(userInfo);
-        startActivity(intent);
-    }
+    private void goToResults(ArrayList<String> errors) {
 
-    private void goToFail(ArrayList<String> errors) {
         StringBuilder msg = new StringBuilder();
-        if (errors.contains(Constants.KEY_NAME))
-            msg.append(Constants.ERR_NAME).append("\n");
-        if (errors.contains(Constants.KEY_USERNAME))
-            msg.append(Constants.ERR_USERNAME).append("\n");
-        if (errors.contains(Constants.KEY_EMAIL))
-            msg.append(Constants.ERR_EMAIL).append("\n");
-        if (errors.contains(Constants.NO_DOB))
-            msg.append(Constants.ERR_NO_DOB).append("\n");
-        if (errors.contains(Constants.KEY_DOB))
-            msg.append(Constants.ERR_DOB).append("\n");
 
-        Intent intent = new Intent(MainActivity.this, SubmitFail.class);
-        intent.putExtra(Constants.FAIL_MSGS, msg.toString());
+        if (errors.size() > 0) {
+            if (errors.contains(Constants.KEY_NAME))
+                msg.append(Constants.ERR_NAME).append("\n");
+            if (errors.contains(Constants.KEY_USERNAME))
+                msg.append(Constants.ERR_USERNAME).append("\n");
+            if (errors.contains(Constants.KEY_EMAIL))
+                msg.append(Constants.ERR_EMAIL).append("\n");
+            if (errors.contains(Constants.NO_DOB))
+                msg.append(Constants.ERR_NO_DOB).append("\n");
+            if (errors.contains(Constants.KEY_DOB))
+                msg.append(Constants.ERR_DOB).append("\n");
+        } else {
+            msg.append("Thanks for signing up, ").append(username.getText().toString()).append("!");
+        }
+
+        Intent intent = new Intent(MainActivity.this, Results.class);
+        intent.putExtra("submitResults", msg.toString());
         startActivity(intent);
     }
 
