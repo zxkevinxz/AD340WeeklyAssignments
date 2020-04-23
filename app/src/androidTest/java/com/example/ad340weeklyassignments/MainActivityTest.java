@@ -41,7 +41,7 @@ public class MainActivityTest {
         onView(withId(R.id.my_name_date))
                 .check(matches(withText(R.string.name_date)));
     }
-    
+
     @Test
     public void noUsername() {
         onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
@@ -109,7 +109,20 @@ public class MainActivityTest {
     }
 
     @Test
+    public void rotateDate() throws RemoteException {
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        device.setOrientationRight();
+        onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
+        device.setOrientationNatural();
+        onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
+    }
+
+    @Test
     public void testSuccessfulSignUp() {
+        onView(withId(R.id.submit)).perform(click());
         onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
@@ -120,17 +133,6 @@ public class MainActivityTest {
         onView(withId(R.id.results))
                 .check(matches(withText("Thanks for signing up, zxkevinxz!")));
         onView(withId(R.id.newAccount)).perform(click());
-    }
-
-    @Test
-    public void rotateDate() throws RemoteException {
-        onView(withId(R.id.dob_button)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
-        onView(withId(android.R.id.button1)).perform(click());
-        UiDevice device = UiDevice.getInstance(getInstrumentation());
-        device.setOrientationRight();
-        onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
-        device.setOrientationNatural();
-        onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
+        onView(withId(R.id.errorsMsg)).check(matches(withText("")));
     }
 }

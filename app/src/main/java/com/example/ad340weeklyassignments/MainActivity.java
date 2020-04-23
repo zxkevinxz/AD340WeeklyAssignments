@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     protected void onRestart() {
         super.onRestart();
-        name.setText(R.string.empty);
-        email.setText(R.string.empty);
-        username.setText(R.string.empty);
-        dob.setText(Constants.DEFAULT_DOB);
-        err.setText(R.string.empty);
+        name.setText(getString(R.string.empty));
+        email.setText(getString(R.string.empty));
+        username.setText(getString(R.string.empty));
+        dob.setText(getString(R.string.empty));
+        err.setText(getString(R.string.empty));
     }
 
     @Override
