@@ -134,5 +134,14 @@ public class MainActivityTest {
                 .check(matches(withText("Thanks for signing up, zxkevinxz!")));
         onView(withId(R.id.newAccount)).perform(click());
         onView(withId(R.id.errorsMsg)).check(matches(withText("")));
+        onView(withId(R.id.username)).perform(clearText());
+        onView(withId(R.id.dob)).perform(click());
+        onView(withId(R.id.dob)).check(matches(withText(Constants.DEFAULT_DOB)));
+    }
+
+    @Test
+    public void testName() {
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.name)).check(matches(withText("")));
     }
 }
