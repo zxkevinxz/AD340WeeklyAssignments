@@ -1,15 +1,14 @@
 <resources>
     <string name="app_name">AD340WeeklyAssignments</string>
     <string name="title_activity_main">Hello World Assignment</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="enter_name">enter name</string>
+    <string name="enter_email_address">enter email address</string>
+    <string name="enter_username">enter username</string>
+    <string name="enter_age">enter age</string>
+    <string name="enter_date_of_birth">set date of birth</string>
+    <string name="empty_dob">mm/dd/yyyy</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="hello_world">Hello World!</string>
-    <string name="name">Pettinger, Kevin</string>
-    <string name="datedone">4/16/2020</string>
+    <string name="submit">submit</string>
+    <string name="name_date">Pettinger, Kevin 4/22/2020</string>
+
 </resources>
