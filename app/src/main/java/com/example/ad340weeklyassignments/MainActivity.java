@@ -63,10 +63,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         month = month + 1;
         date.append(month).append('/').append(dayOfMonth).append('/').append(year);
         dob.setText(date);
-        Log.i(TAG, "onDateSet: ");
     }
 
     public void onSubmit(View view) {
+
         String testName = name.getText().toString();
         String testEmail = email.getText().toString();
         String testUsername = username.getText().toString();
