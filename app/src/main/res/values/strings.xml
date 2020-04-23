@@ -7,6 +7,7 @@
     <string name="enter_age">enter age</string>
     <string name="enter_date_of_birth">set date of birth</string>
     <string name="empty_dob">mm/dd/yyyy</string>
+    <string name="empty" />
 
     <string name="submit">submit</string>
     <string name="name_date">Pettinger, Kevin 4/22/2020</string>
@@ -16,10 +17,10 @@
     <string name="uTestUsername">zxkevinxz</string>
     <string name="uTestEmail">kevinpettinger@gmail.com</string>
     <string name="uTestBadEmail">kevingmail.com</string>
-    <string name="ERR_NAME">Please enter a name</string>
-    <string name="ERR_USERNAME">Please enter a username</string>
-    <string name="ERR_EMAIL">Please enter a valid email</string>
-    <string name="ERR_NO_DOB">Please enter a date of birth</string>
-    <string name="ERR_DOB">Date of birth is not valid, must be at least 18 to join</string>
+    <string name="ERR_NAME">Please enter a name\n</string>
+    <string name="ERR_USERNAME">Please enter a username\n</string>
+    <string name="ERR_EMAIL">Please enter a valid email\n</string>
+    <string name="ERR_NO_DOB">Please enter a date of birth\n</string>
+    <string name="ERR_DOB">Date of birth is not valid, must be at least 18 to join\n</string>
     <string name="THANKS">Thanks for signing up,</string>
 </resources>

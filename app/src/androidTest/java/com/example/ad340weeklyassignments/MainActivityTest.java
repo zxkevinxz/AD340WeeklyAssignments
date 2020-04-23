@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
-    Context context = getInstrumentation().getTargetContext();
+    private Context context = getInstrumentation().getTargetContext();
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule
@@ -40,6 +40,71 @@ public class MainActivityTest {
     public void askForName() {
         onView(withId(R.id.my_name_date))
                 .check(matches(withText(R.string.name_date)));
+    }
+
+    @Test
+    public void noName() {
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_NAME))));
+
+    }
+
+    @Test
+    public void badEmail() {
+        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestBadEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_EMAIL))));
+
+    }
+
+    @Test
+    public void noUsername() {
+        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_USERNAME))));
+
+    }
+
+    @Test
+    public void noDate() {
+        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_NO_DOB))));
+
+    }
+
+    @Test
+    public void tooYoung() {
+        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(2010, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_DOB))));
+
     }
 
     @Test
@@ -66,70 +131,5 @@ public class MainActivityTest {
         onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
         device.setOrientationNatural();
         onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
-    }
-
-    @Test
-    public void noName() {
-        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
-        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
-        onView(withId(R.id.dob_button)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
-        onView(withId(android.R.id.button1)).perform(click());
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_NAME) + "\n")));
-
-    }
-
-    @Test
-    public void badEmail() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
-        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestBadEmail)));
-        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
-        onView(withId(R.id.dob_button)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
-        onView(withId(android.R.id.button1)).perform(click());
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_EMAIL) + "\n")));
-
-    }
-
-    @Test
-    public void noUsername() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
-        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
-        onView(withId(R.id.dob_button)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
-        onView(withId(android.R.id.button1)).perform(click());
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_USERNAME) + "\n")));
-
-    }
-
-    @Test
-    public void noDate() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
-        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
-        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_NO_DOB) + "\n")));
-
-    }
-
-    @Test
-    public void tooYoung() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
-        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
-        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
-        onView(withId(R.id.dob_button)).perform(click());
-        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(2010, 2, 16));
-        onView(withId(android.R.id.button1)).perform(click());
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_DOB) + "\n")));
-
     }
 }

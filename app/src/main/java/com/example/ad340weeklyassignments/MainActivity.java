@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     protected void onRestart() {
         super.onRestart();
-        name.setText("");
-        email.setText("");
-        username.setText("");
+        name.setText(R.string.empty);
+        email.setText(R.string.empty);
+        username.setText(R.string.empty);
         dob.setText(Constants.DEFAULT_DOB);
-        err.setText("");
+        err.setText(R.string.empty);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void onSubmit(View view) {
 
-        err.setText("");
+        err.setText(R.string.empty);
 
         String testName = name.getText().toString();
         String testEmail = email.getText().toString();
@@ -88,15 +88,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         StringBuilder errors = new StringBuilder();
 
         if (testName.equals(""))
-            errors.append(getString(R.string.ERR_NAME)).append("\n");
+            errors.append(getString(R.string.ERR_NAME));
         if (testUsername.equals(""))
-            errors.append(getString(R.string.ERR_USERNAME)).append("\n");
+            errors.append(getString(R.string.ERR_USERNAME));
         if (!testEmail.matches("^(.+)@(.+)$"))
-            errors.append(getString(R.string.ERR_EMAIL)).append("\n");
+            errors.append(getString(R.string.ERR_EMAIL));
         if (bday.equals(Constants.DEFAULT_DOB))
-            errors.append(getString(R.string.ERR_NO_DOB)).append("\n");
+            errors.append(getString(R.string.ERR_NO_DOB));
         else if (checkDOB(bday) < 18)
-            errors.append(getString(R.string.ERR_DOB)).append("\n");
+            errors.append(getString(R.string.ERR_DOB));
 
         if (errors.toString().equals(""))
             goToResults();
