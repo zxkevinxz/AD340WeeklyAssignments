@@ -39,17 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/email"
         />
 
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:hint="@string/enter_age"
-        android:autofillHints="age"
-        android:layout_margin="@dimen/input_margins"
-        app:layout_constraintTop_toBottomOf="@+id/username"
-        />
-
     <TextView
         android:id="@+id/dob"
         android:layout_width="wrap_content"
@@ -59,7 +48,7 @@
         android:textSize="30sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/dob_button"
-        app:layout_constraintTop_toBottomOf="@id/age"
+        app:layout_constraintTop_toBottomOf="@id/username"
         />
 
     <Button
@@ -68,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="@string/enter_date_of_birth"
         android:layout_margin="@dimen/input_margins"
-        app:layout_constraintTop_toBottomOf="@id/age"
+        app:layout_constraintTop_toBottomOf="@id/username"
         app:layout_constraintLeft_toRightOf="@id/dob"
         android:onClick="showDatePickerDialog"
         />

@@ -5,12 +5,8 @@ import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.media.audiofx.DynamicsProcessing;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     EditText name;
     EditText email;
     EditText username;
-    EditText age;
     TextView dob;
 
     @Override
@@ -36,8 +31,37 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         name = (EditText) findViewById(R.id.name);
         email = (EditText) findViewById(R.id.email);
         username = (EditText) findViewById(R.id.username);
-        age = (EditText) findViewById(R.id.age);
         dob = (TextView) findViewById(R.id.dob);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     public void showDatePickerDialog(View v) {
@@ -58,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String testName = name.getText().toString();
         String testEmail = email.getText().toString();
         String testUsername = username.getText().toString();
-        String testAge = age.getText().toString();
         String bday = dob.getText().toString();
 
         ArrayList<String> errors = new ArrayList<>();
@@ -66,14 +89,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (testName.equals(""))
             errors.add(Constants.KEY_NAME);
         if (testUsername.equals(""))
-            errors.add(Constants.KEY_AGE);
-        if (testAge.equals(""))
-            errors.add(Constants.NO_AGE);
-        else if (Integer.parseInt(testAge) <18)
-            errors.add(Constants.KEY_AGE);
+            errors.add(Constants.KEY_USERNAME);
         if (!testEmail.matches("^(.+)@(.+)$"))
             errors.add(Constants.KEY_EMAIL);
-        if (bday.equals("mm/dd/yyyy"))
+        if (bday.equals(Constants.DEFAULT_DOB))
             errors.add(Constants.NO_DOB);
         else if (checkDOB(bday) < 18)
             errors.add(Constants.KEY_DOB);
@@ -92,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         userInfo.putString(Constants.KEY_NAME, name.getText().toString());
         userInfo.putString(Constants.KEY_EMAIL, email.getText().toString());
         userInfo.putString(Constants.KEY_USERNAME, username.getText().toString());
-        userInfo.putString(Constants.KEY_AGE, age.getText().toString());
         userInfo.putString(Constants.KEY_DOB, dob.getText().toString());
         intent.putExtras(userInfo);
         startActivity(intent);
@@ -104,10 +122,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             msg.append(Constants.ERR_NAME).append("\n");
         if (errors.contains(Constants.KEY_USERNAME))
             msg.append(Constants.ERR_USERNAME).append("\n");;
-        if (errors.contains(Constants.NO_AGE))
-            msg.append(Constants.ERR_NO_AGE).append("\n");;
-        if (errors.contains(Constants.KEY_AGE))
-            msg.append(Constants.ERR_AGE).append("\n");;
         if (errors.contains(Constants.KEY_EMAIL))
             msg.append(Constants.ERR_EMAIL).append("\n");;
         if (errors.contains(Constants.NO_DOB))

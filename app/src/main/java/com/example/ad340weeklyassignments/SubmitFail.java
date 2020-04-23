@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class SubmitFail extends AppCompatActivity {
@@ -18,5 +19,10 @@ public class SubmitFail extends AppCompatActivity {
         String msg = intent.getStringExtra(Constants.FAIL_MSGS);
 
         failMsg.setText(msg);
+    }
+
+    public void goToMain(View view) {
+        Intent intent = new Intent(SubmitFail.this, MainActivity.class);
+        startActivity(intent);
     }
 }

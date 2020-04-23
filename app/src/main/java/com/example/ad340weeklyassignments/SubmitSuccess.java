@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 public class SubmitSuccess extends AppCompatActivity {
@@ -27,5 +28,10 @@ public class SubmitSuccess extends AppCompatActivity {
 
         textView.setText(msg);
 
+    }
+
+    public void goToMain(View view) {
+        Intent intent = new Intent(SubmitSuccess.this, MainActivity.class);
+        startActivity(intent);
     }
 }
