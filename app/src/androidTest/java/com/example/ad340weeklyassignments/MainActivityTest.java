@@ -44,6 +44,7 @@ public class MainActivityTest {
 
     @Test
     public void noName() {
+        onView(withId(R.id.name)).perform(clearText());
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
         onView(withId(R.id.dob_button)).perform(click());
@@ -73,6 +74,7 @@ public class MainActivityTest {
     public void noUsername() {
         onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withText(R.id.username)).perform(clearText());
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
