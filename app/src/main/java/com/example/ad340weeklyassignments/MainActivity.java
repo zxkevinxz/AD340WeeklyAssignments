@@ -1,11 +1,15 @@
 package com.example.ad340weeklyassignments;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -35,33 +39,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        Log.i(TAG, "onSaveInstanceState: ");
+        super.onSaveInstanceState(outState);
+        outState.putString(Constants.KEY_DOB, dob.getText().toString());
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
+    public void onRestoreInstanceState(@Nullable Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey(Constants.KEY_DOB))
+            dob.setText(savedInstanceState.getString(Constants.KEY_DOB));
     }
 
     public void showDatePickerDialog(View v) {
@@ -76,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         month = month + 1;
         date.append(month).append('/').append(dayOfMonth).append('/').append(year);
         dob.setText(date);
+        Log.i(TAG, "onDateSet: ");
     }
 
     public void onSubmit(View view) {
