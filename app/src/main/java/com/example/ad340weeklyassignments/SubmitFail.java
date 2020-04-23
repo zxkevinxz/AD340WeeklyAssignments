@@ -15,7 +15,7 @@ public class SubmitFail extends AppCompatActivity {
         TextView failMsg = findViewById(R.id.failMsg);
         Intent intent = getIntent();
 
-        String msg = intent.getStringExtra("fail");
+        String msg = intent.getStringExtra(Constants.FAIL_MSGS);
 
         failMsg.setText(msg);
     }

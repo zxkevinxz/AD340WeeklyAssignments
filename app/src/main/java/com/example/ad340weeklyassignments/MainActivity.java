@@ -15,6 +15,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -56,27 +58,35 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String testName = name.getText().toString();
         String testEmail = email.getText().toString();
         String testUsername = username.getText().toString();
-        int testAge = Integer.parseInt(age.getText().toString());
+        String testAge = age.getText().toString();
         String bday = dob.getText().toString();
 
         ArrayList<String> errors = new ArrayList<>();
 
         if (testName.equals(""))
-            errors.add("name");
+            errors.add(Constants.KEY_NAME);
         if (testUsername.equals(""))
-            errors.add("username");
-        if (testAge < 18)
-            errors.add("age");
+            errors.add(Constants.KEY_AGE);
+        if (testAge.equals(""))
+            errors.add(Constants.NO_AGE);
+        else if (Integer.parseInt(testAge) <18)
+            errors.add(Constants.KEY_AGE);
         if (!testEmail.matches("^(.+)@(.+)$"))
-            errors.add("email");
+            errors.add(Constants.KEY_EMAIL);
+        if (bday.equals("mm/dd/yyyy"))
+            errors.add(Constants.NO_DOB);
+        else if (checkDOB(bday) < 18)
+            errors.add(Constants.KEY_DOB);
 
 
         if (errors.size() > 0)
             goToFail(errors);
+        else
+            goToSuccess();
 
     }
 
-    public void goToSuccess() {
+    private void goToSuccess() {
         Intent intent = new Intent(MainActivity.this, SubmitSuccess.class);
         Bundle userInfo = new Bundle();
         userInfo.putString(Constants.KEY_NAME, name.getText().toString());
@@ -88,7 +98,38 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         startActivity(intent);
     }
 
-    public void goToFail(ArrayList<String> errors) {
+    private void goToFail(ArrayList<String> errors) {
+        StringBuilder msg = new StringBuilder();
+        if (errors.contains(Constants.KEY_NAME))
+            msg.append(Constants.ERR_NAME).append("\n");
+        if (errors.contains(Constants.KEY_USERNAME))
+            msg.append(Constants.ERR_USERNAME).append("\n");;
+        if (errors.contains(Constants.NO_AGE))
+            msg.append(Constants.ERR_NO_AGE).append("\n");;
+        if (errors.contains(Constants.KEY_AGE))
+            msg.append(Constants.ERR_AGE).append("\n");;
+        if (errors.contains(Constants.KEY_EMAIL))
+            msg.append(Constants.ERR_EMAIL).append("\n");;
+        if (errors.contains(Constants.NO_DOB))
+            msg.append(Constants.ERR_NO_DOB).append("\n");;
+        if (errors.contains(Constants.KEY_DOB))
+            msg.append(Constants.ERR_DOB).append("\n");;
 
+        Intent intent = new Intent(MainActivity.this, SubmitFail.class);
+        intent.putExtra(Constants.FAIL_MSGS, msg.toString());
+        startActivity(intent);
+    }
+
+    private int checkDOB(String dateOfBirth) {
+        int year = Integer.parseInt(dateOfBirth.substring(dateOfBirth.lastIndexOf('/')+1));
+        int month = Integer.parseInt(dateOfBirth.substring(0, dateOfBirth.indexOf('/')));
+        int day = Integer.parseInt(dateOfBirth.substring(dateOfBirth.indexOf('/')+1, dateOfBirth.lastIndexOf('/')));
+
+        LocalDate today = LocalDate.now();
+        LocalDate birthday = LocalDate.of(year, month, day);
+
+        Period p = Period.between(birthday, today);
+
+        return p.getYears();
     }
 }
