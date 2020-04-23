@@ -8,7 +8,6 @@ import androidx.fragment.app.DialogFragment;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
@@ -110,13 +109,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if (errors.contains(Constants.KEY_NAME))
             msg.append(Constants.ERR_NAME).append("\n");
         if (errors.contains(Constants.KEY_USERNAME))
-            msg.append(Constants.ERR_USERNAME).append("\n");;
+            msg.append(Constants.ERR_USERNAME).append("\n");
         if (errors.contains(Constants.KEY_EMAIL))
-            msg.append(Constants.ERR_EMAIL).append("\n");;
+            msg.append(Constants.ERR_EMAIL).append("\n");
         if (errors.contains(Constants.NO_DOB))
-            msg.append(Constants.ERR_NO_DOB).append("\n");;
+            msg.append(Constants.ERR_NO_DOB).append("\n");
         if (errors.contains(Constants.KEY_DOB))
-            msg.append(Constants.ERR_DOB).append("\n");;
+            msg.append(Constants.ERR_DOB).append("\n");
 
         Intent intent = new Intent(MainActivity.this, SubmitFail.class);
         intent.putExtra(Constants.FAIL_MSGS, msg.toString());

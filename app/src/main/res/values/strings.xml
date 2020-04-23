@@ -12,4 +12,8 @@
     <string name="name_date">Pettinger, Kevin 4/22/2020</string>
     <string name="create_a_new_account">Create A New Account</string>
 
+    <string name="uTestName">Kevin Pettinger</string>
+    <string name="uTestUsername">zxkevinxz</string>
+    <string name="uTestEmail">kevinpettinger@gmail.com</string>
+    <string name="uTestBadEmail">kevingmail.com</string>
 </resources>
