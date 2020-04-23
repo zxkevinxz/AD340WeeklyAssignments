@@ -16,15 +16,15 @@ import android.widget.TextView;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
-    EditText name;
-    EditText email;
-    EditText username;
-    TextView dob;
+    private EditText name;
+    private EditText email;
+    private EditText username;
+    private TextView dob;
+    private TextView err;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,17 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         email = (EditText) findViewById(R.id.email);
         username = (EditText) findViewById(R.id.username);
         dob = (TextView) findViewById(R.id.dob);
+        err = (TextView) findViewById(R.id.errorsMsg);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        name.setText("");
+        email.setText("");
+        username.setText("");
+        dob.setText(Constants.DEFAULT_DOB);
+        err.setText("");
     }
 
     @Override
@@ -67,49 +78,40 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void onSubmit(View view) {
 
+        err.setText("");
+
         String testName = name.getText().toString();
         String testEmail = email.getText().toString();
         String testUsername = username.getText().toString();
         String bday = dob.getText().toString();
 
-        ArrayList<String> errors = new ArrayList<>();
+        StringBuilder errors = new StringBuilder();
 
         if (testName.equals(""))
-            errors.add(Constants.KEY_NAME);
+            errors.append(getString(R.string.ERR_NAME)).append("\n");
         if (testUsername.equals(""))
-            errors.add(Constants.KEY_USERNAME);
+            errors.append(getString(R.string.ERR_USERNAME)).append("\n");
         if (!testEmail.matches("^(.+)@(.+)$"))
-            errors.add(Constants.KEY_EMAIL);
+            errors.append(getString(R.string.ERR_EMAIL)).append("\n");
         if (bday.equals(Constants.DEFAULT_DOB))
-            errors.add(Constants.NO_DOB);
+            errors.append(getString(R.string.ERR_NO_DOB)).append("\n");
         else if (checkDOB(bday) < 18)
-            errors.add(Constants.KEY_DOB);
+            errors.append(getString(R.string.ERR_DOB)).append("\n");
 
-        goToResults(errors);
+        if (errors.toString().equals(""))
+            goToResults();
+        else
+            err.setText(errors.toString());
 
     }
 
-    private void goToResults(ArrayList<String> errors) {
+    private void goToResults() {
 
         StringBuilder msg = new StringBuilder();
-
-        if (errors.size() > 0) {
-            if (errors.contains(Constants.KEY_NAME))
-                msg.append(Constants.ERR_NAME).append("\n");
-            if (errors.contains(Constants.KEY_USERNAME))
-                msg.append(Constants.ERR_USERNAME).append("\n");
-            if (errors.contains(Constants.KEY_EMAIL))
-                msg.append(Constants.ERR_EMAIL).append("\n");
-            if (errors.contains(Constants.NO_DOB))
-                msg.append(Constants.ERR_NO_DOB).append("\n");
-            if (errors.contains(Constants.KEY_DOB))
-                msg.append(Constants.ERR_DOB).append("\n");
-        } else {
-            msg.append("Thanks for signing up, ").append(username.getText().toString()).append("!");
-        }
+        msg.append(getString(R.string.THANKS)).append(" ").append(username.getText().toString()).append("!");
 
         Intent intent = new Intent(MainActivity.this, Results.class);
-        intent.putExtra("submitResults", msg.toString());
+        intent.putExtra(Constants.KEY_RESULTS, msg.toString());
         startActivity(intent);
     }
 

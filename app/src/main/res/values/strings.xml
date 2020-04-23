@@ -16,4 +16,10 @@
     <string name="uTestUsername">zxkevinxz</string>
     <string name="uTestEmail">kevinpettinger@gmail.com</string>
     <string name="uTestBadEmail">kevingmail.com</string>
+    <string name="ERR_NAME">Please enter a name</string>
+    <string name="ERR_USERNAME">Please enter a username</string>
+    <string name="ERR_EMAIL">Please enter a valid email</string>
+    <string name="ERR_NO_DOB">Please enter a date of birth</string>
+    <string name="ERR_DOB">Date of birth is not valid, must be at least 18 to join</string>
+    <string name="THANKS">Thanks for signing up,</string>
 </resources>

@@ -54,7 +54,6 @@ public class MainActivityTest {
         onView(withId(R.id.results))
                 .check(matches(withText("Thanks for signing up, zxkevinxz!")));
         onView(withId(R.id.newAccount)).perform(click());
-        onView(withId(R.id.name)).check(matches(withText("")));
     }
 
     @Test
@@ -77,8 +76,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText(Constants.ERR_NAME + "\n")));
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_NAME) + "\n")));
 
     }
 
@@ -91,8 +90,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText(Constants.ERR_EMAIL + "\n")));
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_EMAIL) + "\n")));
 
     }
 
@@ -104,8 +103,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText(Constants.ERR_USERNAME + "\n")));
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_USERNAME) + "\n")));
 
     }
 
@@ -115,8 +114,8 @@ public class MainActivityTest {
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText(Constants.ERR_NO_DOB + "\n")));
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_NO_DOB) + "\n")));
 
     }
 
@@ -129,8 +128,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(2010, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText(Constants.ERR_DOB + "\n")));
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_DOB) + "\n")));
 
     }
 }

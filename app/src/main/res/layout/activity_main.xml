@@ -80,5 +80,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
+    <TextView
+        android:id="@+id/errorsMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/input_margins"
+        app:layout_constraintTop_toBottomOf="@+id/submit"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

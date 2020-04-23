@@ -19,12 +19,11 @@ public class Results extends AppCompatActivity {
         TextView results = findViewById(R.id.results);
         Intent intent = getIntent();
 
-        results.setText(intent.getStringExtra("submitResults"));
+        results.setText(intent.getStringExtra(Constants.KEY_RESULTS));
 
     }
 
     public void goToMain(View view) {
-        Intent intent = new Intent(Results.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
