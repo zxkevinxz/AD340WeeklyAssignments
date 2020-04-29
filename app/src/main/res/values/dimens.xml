@@ -1,4 +1,22 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="input_margins">15dp</dimen>
+    <dimen name="image_height">300dp</dimen>
+    <dimen name="image_margin_top">20dp</dimen>
+    <dimen name="profile_name_space">5dp</dimen>
+    <dimen name="name_font_size">20sp</dimen>
+    <dimen name="age_spacing">30dp</dimen>
+    <dimen name="occupation_font_size">15dp</dimen>
+    <dimen name="profile_occ_start_margin">25dp</dimen>
+    <dimen name="profile_desc_mTop">20dp</dimen>
+    <dimen name="profile_desc_mStart">15dp</dimen>
+    <dimen name="profile_desc_mEnd">15dp</dimen>
+    <dimen name="profile_desc_padding">20dp</dimen>
+    <dimen name="header_mTop">20dp</dimen>
+    <dimen name="header_mStart">15dp</dimen>
+    <dimen name="header_mEnd">15dp</dimen>
+    <dimen name="header_padding">10dp</dimen>
+    <dimen name="rounder_border_width">5dp</dimen>
+    <dimen name="rounded_border_radius">20dp</dimen>
+    <dimen name="rounded_border_padding">10dp</dimen>
 </resources>

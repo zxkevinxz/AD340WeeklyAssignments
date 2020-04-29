@@ -3,8 +3,11 @@ package com.example.ad340weeklyassignments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Handler;
 import android.os.RemoteException;
+import android.util.Log;
 import android.widget.DatePicker;
+import android.widget.EditText;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -16,6 +19,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.constraintlayout.widget.Constraints.TAG;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -122,6 +126,7 @@ public class MainActivityTest {
 
     @Test
     public void testSuccessfulSignUp() {
+
         onView(withId(R.id.submit)).perform(click());
         onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -134,8 +139,11 @@ public class MainActivityTest {
                 .check(matches(withText("Thanks for signing up, zxkevinxz!")));
         onView(withId(R.id.newAccount)).perform(click());
         onView(withId(R.id.errorsMsg)).check(matches(withText("")));
-        onView(withId(R.id.username)).perform(clearText());
-        onView(withId(R.id.dob)).perform(click());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         onView(withId(R.id.dob)).check(matches(withText(Constants.DEFAULT_DOB)));
     }
 
