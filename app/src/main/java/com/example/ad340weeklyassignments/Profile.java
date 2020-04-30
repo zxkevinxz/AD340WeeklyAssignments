@@ -26,7 +26,7 @@ public class Profile extends AppCompatActivity {
 
         profileFirstName.setText(userInfo.getString(Constants.KEY_FIRSTNAME));
         profileLastName.setText(userInfo.getString(Constants.KEY_LASTNAME));
-        age.setText(userInfo.getInt(Constants.KEY_AGE));
+        age.setText(Integer.toString(userInfo.getInt(Constants.KEY_AGE)));
         profileOccupation.setText(userInfo.getString(Constants.KEY_OCCUPATION));
         profileDescription.setText(userInfo.getString(Constants.KEY_DESCRIPTION));
 

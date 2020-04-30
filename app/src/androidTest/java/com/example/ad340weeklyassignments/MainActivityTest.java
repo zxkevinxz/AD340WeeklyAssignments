@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
+import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -48,9 +49,13 @@ public class MainActivityTest {
 
     @Test
     public void noUsername() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(clearText());
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
@@ -60,24 +65,48 @@ public class MainActivityTest {
 
     }
     @Test
-    public void noName() {
-        onView(withId(R.id.name)).perform(clearText());
+    public void noFirstName() {
+        onView(withId(R.id.firstName)).perform(clearText());
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
         onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_NAME))));
+                .check(matches(withText(context.getString(R.string.ERR_FIRST_NAME))));
+    }
 
+    @Test
+    public void noLastName() {
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(clearText());
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_LAST_NAME))));
     }
 
     @Test
     public void badEmail() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestBadEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
@@ -89,9 +118,13 @@ public class MainActivityTest {
 
     @Test
     public void noDate() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.submit)).perform(click());
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText(context.getString(R.string.ERR_NO_DOB))));
@@ -100,9 +133,13 @@ public class MainActivityTest {
 
     @Test
     public void tooYoung() {
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(2010, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
@@ -112,6 +149,40 @@ public class MainActivityTest {
 
     }
 
+    @Test
+    public void noOccupation() {
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_OCCUPATION))));
+    }
+
+    @Test
+    public void noDescription() {
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_DESCRIPTION))));
+    }
+
+    
+    
     @Test
     public void rotateDate() throws RemoteException {
         onView(withId(R.id.dob_button)).perform(click());
@@ -127,29 +198,30 @@ public class MainActivityTest {
     @Test
     public void testSuccessfulSignUp() {
 
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.name)).perform(typeText(context.getString(R.string.uTestName)));
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestOccupation)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.results))
-                .check(matches(withText("Thanks for signing up, zxkevinxz!")));
-        onView(withId(R.id.newAccount)).perform(click());
-        onView(withId(R.id.errorsMsg)).check(matches(withText("")));
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        onView(withId(R.id.dob)).check(matches(withText(Constants.DEFAULT_DOB)));
+        onView(withId(R.id.profileDescription))
+                .check(matches(withText(context.getString(R.string.uTestDescription))));
+        onView(withId(R.id.profileOccupation))
+                .check(matches(withText(context.getString(R.string.uTestOccupation))));
+        onView(withId(R.id.profileFirstName))
+                .check(matches(withText(context.getString(R.string.uTestFirstName))));
+        onView(withId(R.id.profileLastName))
+                .check(matches(withText(context.getString(R.string.uTestLastName))));
+        onView(withId(R.id.age))
+                .check(matches(withText(context.getString(R.string.uTestAge))));
+
+
+
     }
 
-    @Test
-    public void testName() {
-        onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.name)).check(matches(withText("")));
-    }
 }

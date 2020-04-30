@@ -4,11 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
+import android.util.Patterns;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -95,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String testOccupation = occupation.getText().toString();
         String testDescription = description.getText().toString();
         String bday = dob.getText().toString();
-        int age = checkDOB(bday);
 
         StringBuilder errors = new StringBuilder();
 
@@ -107,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errors.append(getString(R.string.ERR_NAME_LENGTH));
         if (testUsername.equals(""))
             errors.append(getString(R.string.ERR_USERNAME));
-        if (!testEmail.matches("^(.+)@(.+)$"))
+        if (!checkEmail(testEmail))
             errors.append(getString(R.string.ERR_EMAIL));
         if(testOccupation.equals(""))
             errors.append(getString(R.string.ERR_OCCUPATION));
@@ -115,11 +113,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errors.append(getString(R.string.ERR_DESCRIPTION));
         if (bday.equals(Constants.DEFAULT_DOB))
             errors.append(getString(R.string.ERR_NO_DOB));
-        else if (age < 18)
+        else if (checkDOB(bday) < 18)
             errors.append(getString(R.string.ERR_DOB));
 
         if (errors.toString().equals(""))
-            goToProfile(testFirstName, testLastName, testUsername, testEmail, testOccupation, testDescription, bday, age);
+            goToProfile(testFirstName, testLastName, testUsername, testEmail, testOccupation, testDescription, bday, checkDOB(bday));
         else
             err.setText(errors.toString());
 
@@ -154,5 +152,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         Period p = Period.between(birthday, today);
         return p.getYears();
+    }
+
+    private boolean checkEmail(String email) {
+        return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

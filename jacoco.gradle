@@ -23,7 +23,8 @@ def excludes = [
         '**/*_Factory.*',
         '**/*_MembersInjector.*',
         '**/*_LifecycleAdapter.*',
-        '**/models/**'
+        '**/models/**',
+        '**/Constants.java'
 ]
 
 def javaClasses = fileTree(
