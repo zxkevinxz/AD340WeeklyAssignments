@@ -1,26 +1,59 @@
 <resources>
-    <string name="app_name">AD340WeeklyAssignments</string>
+    <!-- app strings -->
+    <string name="app_name">How You Doin\'?</string>
     <string name="title_activity_main">Hello World Assignment</string>
-    <string name="enter_name">enter name</string>
+    <string name="empty" />
+
+    <!-- hint and descriptions -->
+    <string name="enter_first_name">enter first name</string>
     <string name="enter_email_address">enter email address</string>
     <string name="enter_username">enter username</string>
     <string name="enter_age">enter age</string>
     <string name="enter_date_of_birth">set date of birth</string>
     <string name="empty_dob">mm/dd/yyyy</string>
-    <string name="empty" />
+    <string name="enter_last_name">enter last name</string>
+    <string name="enter_occupation">enter occupation</string>
+    <string name="enter_description">enter description about yourself\n\n</string>
+    <string name="hint_last_name">last name</string>
+    <string name="hint_first_name">first name</string>
 
+    <!-- buttons -->
     <string name="submit">submit</string>
-    <string name="name_date">Pettinger, Kevin 4/22/2020</string>
+    <string name="name_date">Pettinger, Kevin 4/29/2020</string>
     <string name="create_a_new_account">Create A New Account</string>
 
-    <string name="uTestName">Kevin Pettinger</string>
+    <!-- testing -->
+    <string name="uTestFirstName">Kevin</string>
+    <string name="uTestLastName">Pettinger</string>
     <string name="uTestUsername">zxkevinxz</string>
     <string name="uTestEmail">kevinpettinger@gmail.com</string>
     <string name="uTestBadEmail">kevingmail.com</string>
-    <string name="ERR_NAME">Please enter a name\n</string>
+    <string name="uTestDescription">Hi, I\'m Kevin. This is my profile description.</string>
+
+    <!-- error messages -->
+    <string name="ERR_FIRST_NAME">Please enter a first name\n</string>
     <string name="ERR_USERNAME">Please enter a username\n</string>
     <string name="ERR_EMAIL">Please enter a valid email\n</string>
     <string name="ERR_NO_DOB">Please enter a date of birth\n</string>
     <string name="ERR_DOB">Date of birth is not valid, must be at least 18 to join\n</string>
-    <string name="THANKS">Thanks for signing up,</string>
+    <string name="ERR_LAST_NAME">Please enter a last name\n</string>
+    <string name="ERR_OCCUPATION">Please enter an occupation\n</string>
+    <string name="ERR_DESCRIPTION">Please enter a description of yourself\n</string>
+    <string name="ERR_NAME_LENGTH">First or Last name cannot be longer than 25 characters\n</string>
+
+    <!-- thank you message -->
+    <string name="THANKS">Thanks for signing up,\s</string>
+    <string name="THANKS_EXCLAMATION">!</string>
+
+    <!-- profile template -->
+    <string name="profile_photo">profile photo</string>
+    <string name="profile_first_name">first name</string>
+    <string name="profile_last_name">last name</string>
+    <string name="profile_age">99</string>
+    <string name="profile_occupation">occupation</string>
+
+    <!-- lorem ipsum -->
+    <string name="lorem">t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
+    <string name="uTestOccupation">software developer</string>
+    <string name="uTestAge">37</string>
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <stroke
+        android:width="@dimen/rounder_border_width"
+        android:color="@color/colorPrimaryDark" />
+
+    <solid android:color="@color/colorPrimaryLight" />
+
+    <padding
+        android:left="@dimen/rounded_border_padding"
+        android:right="@dimen/rounded_border_padding"
+        android:bottom="@dimen/rounded_border_padding"
+        android:top="@dimen/rounded_border_padding" />
+
+    <corners android:radius="@dimen/rounded_border_radius" />
+</shape>
