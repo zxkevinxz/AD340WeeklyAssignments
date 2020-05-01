@@ -25,10 +25,14 @@
     <!-- testing -->
     <string name="uTestFirstName">Kevin</string>
     <string name="uTestLastName">Pettinger</string>
+    <string name="uTestFullName">Kevin Pettinger</string>
     <string name="uTestUsername">zxkevinxz</string>
     <string name="uTestEmail">kevinpettinger@gmail.com</string>
     <string name="uTestBadEmail">kevingmail.com</string>
     <string name="uTestDescription">Hi, I\'m Kevin. This is my profile description.</string>
+    <string name="uTestOccupation">software developer</string>
+    <string name="uTestAge">37</string>
+    <string name="uTestNameLength">kevineijfoisdajfiuosdhfjsiduahfsiudhfsiuahfiusdhfsaiuhf</string>
 
     <!-- error messages -->
     <string name="ERR_FIRST_NAME">Please enter a first name\n</string>
@@ -47,17 +51,15 @@
 
     <!-- profile template -->
     <string name="profile_photo">profile photo</string>
-    <string name="profile_first_name">first name</string>
-    <string name="profile_last_name">last name</string>
+    <string name="profile_name">profile full name</string>
     <string name="profile_age">99</string>
-    <string name="profile_occupation">occupation</string>
+    <string name="profile_occupation">profile occupation</string>
 
     <!-- lorem ipsum -->
     <string name="lorem">t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
     <string name="testScrollLorem">t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</string>
+    <string name="ERR_OCC_LENGTH">Occupation cannot be greater than 40 characters</string>
 
     <!-- unsorted -->
-    <string name="uTestOccupation">software developer</string>
-    <string name="uTestAge">37</string>
-    <string name="uTestNameLength">kevineijfoisdajfiuosdhfjsiduahfsiudhfsiuahfiusdhfsaiuhf</string>
+
 </resources>

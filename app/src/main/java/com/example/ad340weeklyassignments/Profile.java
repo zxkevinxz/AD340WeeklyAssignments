@@ -18,14 +18,17 @@ public class Profile extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle userInfo = intent.getExtras();
 
-        TextView profileFirstName = findViewById(R.id.profileFirstName);
-        TextView profileLastName = findViewById(R.id.profileLastName);
+        TextView profileName = findViewById(R.id.profileName);
         TextView age = findViewById(R.id.age);
         TextView profileOccupation = findViewById(R.id.profileOccupation);
         TextView profileDescription = findViewById(R.id.profileDescription);
 
-        profileFirstName.setText(userInfo.getString(Constants.KEY_FIRSTNAME));
-        profileLastName.setText(userInfo.getString(Constants.KEY_LASTNAME));
+        StringBuilder name = new StringBuilder();
+        name.append(userInfo.getString(Constants.KEY_FIRSTNAME))
+                .append(Constants.BLANK_SPACE)
+                .append(userInfo.getString(Constants.KEY_LASTNAME));
+
+        profileName.setText(name.toString());
         age.setText(Integer.toString(userInfo.getInt(Constants.KEY_AGE)));
         profileOccupation.setText(userInfo.getString(Constants.KEY_OCCUPATION));
         profileDescription.setText(userInfo.getString(Constants.KEY_DESCRIPTION));

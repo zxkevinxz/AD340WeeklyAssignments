@@ -10,4 +10,5 @@ public class Constants {
     static final String KEY_DESCRIPTION = "description";
     static final String KEY_USERNAME = "username";
     static final String KEY_EMAIL = "email";
+    static final String BLANK_SPACE = " ";
 }
