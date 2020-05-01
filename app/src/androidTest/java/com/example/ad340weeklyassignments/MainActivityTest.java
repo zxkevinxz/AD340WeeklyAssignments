@@ -84,7 +84,9 @@ public class MainActivityTest {
 
     @Test
     public void firstNameTooLong() {
+        onView(withId(R.id.firstName)).perform(clearText());
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestNameLength)));
+        onView(withId(R.id.lastName)).perform(clearText());
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
         onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
