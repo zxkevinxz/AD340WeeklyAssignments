@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             errors.append(getString(R.string.ERR_EMAIL));
         if(testOccupation.equals(""))
             errors.append(getString(R.string.ERR_OCCUPATION));
+        if (testOccupation.length() > 40)
+            errors.append(getString(R.string.ERR_OCC_LENGTH));
         if(testDescription.equals(""))
             errors.append(getString(R.string.ERR_DESCRIPTION));
         if (bday.equals(Constants.DEFAULT_DOB))

@@ -26,7 +26,7 @@
         <View
             android:id="@+id/profileHeader"
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="@dimen/profile_header_height"
             app:layout_constraintTop_toBottomOf="@id/profileImage"
             app:layout_constraintStart_toStartOf="parent"
             android:background="@drawable/rounded_corners"
@@ -64,8 +64,10 @@
 
             <TextView
                 android:id="@+id/profileOccupation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="@dimen/profile_occ_height"
+                android:autoSizeTextType="uniform"
+                app:layout_constraintWidth_percent="0.75"
                 android:text="@string/profile_occupation"
                 android:textSize="@dimen/occupation_font_size"
                 app:layout_constraintStart_toStartOf="@id/profileHeader"

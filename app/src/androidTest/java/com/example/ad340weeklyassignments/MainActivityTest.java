@@ -221,6 +221,23 @@ public class MainActivityTest {
     }
 
     @Test
+    public void badLengthOccupation() {
+        onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
+        onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
+        onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
+        onView(withId(R.id.username)).perform(typeText(context.getString(R.string.uTestUsername)));
+        onView(withId(R.id.occupation)).perform(typeText(context.getString(R.string.uTestNameLength)));
+        onView(withId(R.id.description)).perform(typeText(context.getString(R.string.uTestDescription)));
+        Espresso.closeSoftKeyboard();
+        onView(withId(R.id.dob_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
+        onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.submit)).perform(click());
+        onView(withId(R.id.errorsMsg))
+                .check(matches(withText(context.getString(R.string.ERR_OCC_LENGTH))));
+    }
+
+    @Test
     public void noDescription() {
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));

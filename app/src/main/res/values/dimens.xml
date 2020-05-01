@@ -7,7 +7,7 @@
     <dimen name="name_font_size">20sp</dimen>
     <dimen name="age_spacing">5dp</dimen>
     <dimen name="occupation_font_size">15dp</dimen>
-    <dimen name="profile_occ_start_margin">50dp</dimen>
+    <dimen name="profile_occ_start_margin">40dp</dimen>
     <dimen name="profile_desc_mTop">20dp</dimen>
     <dimen name="profile_desc_mStart">15dp</dimen>
     <dimen name="profile_desc_mEnd">15dp</dimen>
@@ -22,4 +22,6 @@
     <dimen name="zero_dp">0dp</dimen>
     <dimen name="profile_name_height">35sp</dimen>
     <dimen name="profile_name_mTop">10dp</dimen>
+    <dimen name="profile_occ_height">20dp</dimen>
+    <dimen name="profile_header_height">80dp</dimen>
 </resources>
