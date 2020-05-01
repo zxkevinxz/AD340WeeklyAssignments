@@ -236,8 +236,8 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.ERR_DESCRIPTION))));
     }
 
-    
-    
+
+
     @Test
     public void rotateDate() throws RemoteException {
         onView(withId(R.id.dob_button)).perform(click());
@@ -248,6 +248,15 @@ public class MainActivityTest {
         onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
         device.setOrientationNatural();
         onView(withId(R.id.dob)).check(matches(withText("2/16/1983")));
+    }
+
+    @Test
+    public void rotateNoDate() throws RemoteException {
+        UiDevice device = UiDevice.getInstance(getInstrumentation());
+        device.setOrientationRight();
+        onView(withId(R.id.dob)).check(matches(withText(context.getString(R.string.empty_dob))));
+        device.setOrientationNatural();
+        onView(withId(R.id.dob)).check(matches(withText(context.getString(R.string.empty_dob))));
     }
 
     @Test
