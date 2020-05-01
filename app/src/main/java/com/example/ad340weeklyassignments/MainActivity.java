@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         username.setText(getString(R.string.empty));
         occupation.setText("");
         description.setText("");
-        dob.setText(getString(R.string.empty));
+        dob.setText(Constants.DEFAULT_DOB);
         err.setText(getString(R.string.empty));
     }
 

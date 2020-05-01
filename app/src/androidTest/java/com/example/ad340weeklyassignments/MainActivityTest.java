@@ -277,10 +277,8 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestDescription))));
         onView(withId(R.id.profileOccupation))
                 .check(matches(withText(context.getString(R.string.uTestOccupation))));
-        onView(withId(R.id.profileFirstName))
-                .check(matches(withText(context.getString(R.string.uTestFirstName))));
-        onView(withId(R.id.profileLastName))
-                .check(matches(withText(context.getString(R.string.uTestLastName))));
+        onView(withId(R.id.profileName))
+                .check(matches(withText(context.getString(R.string.uTestFullName))));
         onView(withId(R.id.age))
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         Espresso.pressBack();
@@ -304,8 +302,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(ViewActions.scrollTo(), click());
-        onView(withId(R.id.profileFirstName))
-                .check(matches(withText(context.getString(R.string.uTestFirstName))));
+        onView(withId(R.id.profileName))
+                .check(matches(withText(context.getString(R.string.uTestFullName))));
     }
 
 }
