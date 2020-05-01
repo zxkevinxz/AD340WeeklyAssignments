@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (!dob.getText().toString().isEmpty())
+        if (!dob.getText().toString().equals(getString(R.string.empty_dob)))
             outState.putString(Constants.KEY_DOB, dob.getText().toString());
     }
 
