@@ -26,10 +26,12 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
+import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
+import static org.hamcrest.Matchers.allOf;
 
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.*;
@@ -299,8 +301,14 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestFullName))));
         onView(withId(R.id.age))
                 .check(matches(withText(context.getString(R.string.uTestAge))));
-        onView(withId(R.id.profileDescription)).perform(swipeLeft());
-        onView(withId(R.id.matches)).perform(swipeLeft());
+        onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
+                .perform(click());
+        onView(withId(R.id.matches))
+                .check(matches(withText(R.string.matches_text)));
+        onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
+                .perform(click());
+        onView(withId(R.id.settings))
+                .check(matches(withText(R.string.settings_text)));
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
