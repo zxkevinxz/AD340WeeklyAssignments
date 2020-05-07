@@ -160,4 +160,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     private boolean checkEmail(String email) {
         return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
+
+    public void goToUser(View view) {
+        Intent intent = new Intent(MainActivity.this, UserHome.class);
+        startActivity(intent);
+
+    }
 }
