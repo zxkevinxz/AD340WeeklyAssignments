@@ -3,15 +3,18 @@ package com.example.ad340weeklyassignments;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.ad340weeklyassignments.databinding.ActivityUserHomeBinding;
-import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
@@ -44,16 +47,11 @@ public class UserHome extends AppCompatActivity {
 
         binding.viewpager.setAdapter(adapter);
 
-        TabLayoutMediator.TabConfigurationStrategy tabConfig = new TabLayoutMediator.TabConfigurationStrategy() {
-            @Override
-            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                for (int i = 0; i <= position; i++) {
-                    tab.setText(adapter.getPageTitle(position));
-                }
+        TabLayoutMediator.TabConfigurationStrategy tabConfig = (tab, position) -> {
+            for (int i = 0; i <= position; i++) {
+                tab.setText(adapter.getPageTitle(position));
             }
         };
-
-
 
         new TabLayoutMediator(binding.tablayout, binding.viewpager, tabConfig).attach();
 

@@ -1,15 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/matches_cardview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/matches_cardview_height"
+    android:layout_marginBottom="@dimen/matches_cv_margin"
+    android:layout_marginLeft="@dimen/matches_cv_margin"
+    android:layout_marginRight="@dimen/matches_cv_margin"
+    app:cardBackgroundColor="@color/matches_card_bg"
     tools:context=".MatchesFragment">
 
-    <TextView
-        android:id="@+id/matches"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/matches_text"
-        android:background="@color/colorPrimary"/>
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/matches_cv_image"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/matches_cv_image_height"
+            android:scaleType="fitXY"
+            app:layout_constraintWidth_percent=".65"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/sleepylily"
+            android:padding="@dimen/matches_cv_image_padding"
+            android:contentDescription="@string/matches_image"
+            />
+        
+        <TextView
+            android:id="@+id/matches_cv_name"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/matches_cv_name_size"
+            app:layout_constraintWidth_percent="0.65"
+            android:autoSizeTextType="uniform"
+            android:textSize="@dimen/name_font_size"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/matches_cv_image"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/uTestFullName"
+            android:layout_marginStart="@dimen/matches_cv_name_margin"
+            />
+
+        <TextView
+            android:id="@+id/matches_cv_occupation"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:autoSizeTextType="uniform"
+            android:textSize="12sp"
+            android:text="@string/max_occ"
+            app:layout_constraintTop_toBottomOf="@id/matches_cv_name"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/matches_cv_occ_margin"
+            />
+
+        <TextView
+            android:id="@+id/matches_cv_desc"
+            android:layout_width="@dimen/zero_dp"
+            android:layout_height="@dimen/matches_desc_height"
+            app:layout_constraintWidth_percent=".35"
+            app:layout_constraintStart_toEndOf="@id/matches_cv_image"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="12sp"
+            android:padding="@dimen/matches_desc_padding"
+            android:text="@string/lorem"
+            android:ellipsize="end"
+            android:maxLines="15"
+            />
+
+        <TextView
+            android:id="@+id/matches_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_age"
+            android:textSize="@dimen/matches_age_size"
+            app:layout_constraintStart_toEndOf="@id/matches_cv_name"
+            app:layout_constraintBottom_toTopOf="@id/matches_cv_occupation"
+            />
+
+        <ImageButton
+            android:id="@+id/matches_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_white_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/matches_cv_occupation"
+            android:background="@color/matches_card_bg"
+            android:layout_marginEnd="10dp"
+            android:contentDescription="@string/matches_fav_desc"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

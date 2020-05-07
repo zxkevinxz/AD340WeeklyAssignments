@@ -45,65 +45,7 @@ public class ProfileFragment extends Fragment {
         occupation.setText(userInfo.getString(Constants.KEY_OCCUPATION));
         description.setText(userInfo.getString(Constants.KEY_DESCRIPTION));
 
-//        ContentAdapter adapter = new ContentAdapter(view.getContext(), userInfo);
-//        LinearLayoutManager mLayoutManager = new LinearLayoutManager(view.getContext());
-//        view.setLayoutManager(mLayoutManager);
-//        view.setAdapter(adapter);
         return view;
     }
 
-//    static class ViewHolder extends RecyclerView.ViewHolder {
-//
-//        TextView profileName;
-//        TextView age;
-//        TextView occupation;
-//        TextView description;
-//
-//        ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-//            super(inflater.inflate(R.layout.profile_fragment, parent, false));
-//            profileName = itemView.findViewById(R.id.profileName);
-//            age = itemView.findViewById(R.id.age);
-//            occupation = itemView.findViewById(R.id.profileOccupation);
-//            description = itemView.findViewById(R.id.profileDescription);
-//        }
-//    }
-//
-//    public static class ContentAdapter extends RecyclerView.Adapter<ViewHolder> {
-//
-//        private final String name;
-//        private final int age;
-//        private final String occupation;
-//        private final String description;
-//
-//        ContentAdapter(Context context, Bundle userInfo) {
-//            StringBuilder nameSB = new StringBuilder();
-//            nameSB.append(userInfo.getString(Constants.KEY_FIRSTNAME))
-//                    .append(Constants.BLANK_SPACE)
-//                    .append(userInfo.getString(Constants.KEY_LASTNAME));
-//
-//            name = nameSB.toString();
-//            age = userInfo.getInt(Constants.KEY_AGE);
-//            occupation = userInfo.getString(Constants.KEY_OCCUPATION);
-//            description = userInfo.getString(Constants.KEY_DESCRIPTION);
-//        }
-//
-//        @NonNull
-//        @Override
-//        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//            holder.profileName.setText(name);
-//            holder.age.setText(Integer.toString(age));
-//            holder.occupation.setText(occupation);
-//            holder.description.setText(description);
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return 0;
-//        }
-//    }
 }

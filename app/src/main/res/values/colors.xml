@@ -7,4 +7,5 @@
     <color name="maintextbackground">#33000000</color>
     <color name="selecttab">#000000</color>
     <color name="cardview_desc_color">#445566</color>
+    <color name="matches_card_bg">#888999</color>
 </resources>

@@ -11,4 +11,5 @@ public class Constants {
     static final String KEY_USERNAME = "username";
     static final String KEY_EMAIL = "email";
     static final String BLANK_SPACE = " ";
+    static final int VIEW_LENGTH = 10;
 }

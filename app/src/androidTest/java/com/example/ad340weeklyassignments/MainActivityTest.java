@@ -280,7 +280,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testSuccessfulSignUp() {
+    public void testSuccessfulSignUp() throws InterruptedException {
 
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
@@ -303,12 +303,12 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        onView(withId(R.id.matches))
-                .check(matches(withText(R.string.matches_text)));
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
+        onView(withId(R.id.settings)).perform(swipeRight());
+        Thread.sleep(1000);
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
