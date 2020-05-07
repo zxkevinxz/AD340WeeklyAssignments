@@ -29,12 +29,11 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Bundle userInfo = getArguments();
         View view = inflater.inflate(R.layout.profile_fragment, container, false);
+
         TextView name = (TextView) view.findViewById(R.id.profileName);
         TextView age = (TextView) view.findViewById(R.id.age);
         TextView occupation = (TextView) view.findViewById(R.id.profileOccupation);
         TextView description = (TextView) view.findViewById(R.id.profileDescription);
-
-
 
         StringBuilder nameSB = new StringBuilder();
         nameSB.append(userInfo.getString(Constants.KEY_FIRSTNAME))

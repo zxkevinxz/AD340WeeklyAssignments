@@ -6,4 +6,5 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="maintextbackground">#33000000</color>
     <color name="selecttab">#000000</color>
+    <color name="cardview_desc_color">#445566</color>
 </resources>

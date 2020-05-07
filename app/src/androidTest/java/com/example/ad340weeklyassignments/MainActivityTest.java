@@ -25,6 +25,7 @@ import static androidx.constraintlayout.widget.Constraints.TAG;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.*;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
@@ -61,8 +62,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_USERNAME))));
+        onView(withId(R.id.username))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_USERNAME))));
 
     }
     @Test
@@ -78,8 +79,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_FIRST_NAME))));
+        onView(withId(R.id.firstName))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_FIRST_NAME))));
     }
 
     @Test
@@ -97,8 +98,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_NAME_LENGTH))));
+        onView(withId(R.id.firstName))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_NAME_LENGTH))));
     }
 
     @Test
@@ -114,8 +115,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_LAST_NAME))));
+        onView(withId(R.id.lastName))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_LAST_NAME))));
     }
 
     @Test
@@ -131,8 +132,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_NAME_LENGTH))));
+        onView(withId(R.id.lastName))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_NAME_LENGTH))));
     }
 
     @Test
@@ -148,8 +149,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_EMAIL))));
+        onView(withId(R.id.email))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_EMAIL))));
 
     }
 
@@ -166,8 +167,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_EMAIL))));
+        onView(withId(R.id.email))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_EMAIL))));
 
     }
 
@@ -216,8 +217,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_OCCUPATION))));
+        onView(withId(R.id.occupation))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_OCCUPATION))));
     }
 
     @Test
@@ -233,8 +234,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_OCC_LENGTH))));
+        onView(withId(R.id.occupation))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_OCC_LENGTH))));
     }
 
     @Test
@@ -249,8 +250,8 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText(context.getString(R.string.ERR_DESCRIPTION))));
+        onView(withId(R.id.description))
+                .check(matches(hasErrorText(context.getString(R.string.ERR_DESCRIPTION))));
     }
 
 
@@ -298,6 +299,8 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestFullName))));
         onView(withId(R.id.age))
                 .check(matches(withText(context.getString(R.string.uTestAge))));
+        onView(withId(R.id.profileDescription)).perform(swipeLeft());
+        onView(withId(R.id.matches)).perform(swipeLeft());
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
@@ -324,3 +327,4 @@ public class MainActivityTest {
     }
 
 }
+

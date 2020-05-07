@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     public void onSubmit(View view) {
 
+        boolean errorCheck = false;
         err.setText(R.string.empty);
 
         String testFirstName = firstName.getText().toString();
@@ -99,27 +100,47 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         StringBuilder errors = new StringBuilder();
 
         if (testFirstName.equals(""))
-            errors.append(getString(R.string.ERR_FIRST_NAME));
+            {firstName.setError(getText(R.string.ERR_FIRST_NAME));
+            errorCheck = true;}
+            // errors.append(getString(R.string.ERR_FIRST_NAME));
         if (testLastName.equals(""))
-            errors.append(getString(R.string.ERR_LAST_NAME));
-        if (testFirstName.length() > 25 || testLastName.length() > 25)
-            errors.append(getString(R.string.ERR_NAME_LENGTH));
+            {lastName.setError(getText(R.string.ERR_LAST_NAME));
+            errorCheck = true;}
+            // errors.append(getString(R.string.ERR_LAST_NAME));
+        if (testFirstName.length() > 25)
+            {firstName.setError(getText(R.string.ERR_NAME_LENGTH));
+            errorCheck = true;}
+        if (testLastName.length() > 25)
+            {lastName.setError(getText(R.string.ERR_NAME_LENGTH));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_NAME_LENGTH));
         if (testUsername.equals(""))
-            errors.append(getString(R.string.ERR_USERNAME));
+            {username.setError(getText(R.string.ERR_USERNAME));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_USERNAME));
         if (!checkEmail(testEmail))
-            errors.append(getString(R.string.ERR_EMAIL));
+            {email.setError(getText(R.string.ERR_EMAIL));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_EMAIL));
         if(testOccupation.equals(""))
-            errors.append(getString(R.string.ERR_OCCUPATION));
+            {occupation.setError(getText(R.string.ERR_OCCUPATION));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_OCCUPATION));
         if (testOccupation.length() > 40)
-            errors.append(getString(R.string.ERR_OCC_LENGTH));
+            {occupation.setError(getText(R.string.ERR_OCC_LENGTH));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_OCC_LENGTH));
         if(testDescription.equals(""))
-            errors.append(getString(R.string.ERR_DESCRIPTION));
+            {description.setError(getText(R.string.ERR_DESCRIPTION));
+            errorCheck = true;}
+            //errors.append(getString(R.string.ERR_DESCRIPTION));
         if (bday.equals(Constants.DEFAULT_DOB))
-            errors.append(getString(R.string.ERR_NO_DOB));
+            {errors.append(getString(R.string.ERR_NO_DOB));
+            errorCheck = true;}
         else if (checkDOB(bday) < 18)
-            errors.append(getString(R.string.ERR_DOB));
-
-        if (errors.toString().equals(""))
+            {errors.append(getString(R.string.ERR_DOB));
+            errorCheck = true;}
+        if (!errorCheck)
             goToProfile(testFirstName, testLastName, testUsername, testEmail, testOccupation, testDescription, bday, checkDOB(bday));
         else
             err.setText(errors.toString());
