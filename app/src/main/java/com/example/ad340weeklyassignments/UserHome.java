@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import android.nfc.Tag;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-
 import com.example.ad340weeklyassignments.databinding.ActivityUserHomeBinding;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -32,9 +30,15 @@ public class UserHome extends AppCompatActivity {
         binding = ActivityUserHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Adapter adapter = new Adapter(this);
+        Intent intent = getIntent();
+        Bundle userInfo = intent.getExtras();
 
-        adapter.addFragment(new ProfileFragment(), "Profile");
+        Adapter adapter = new Adapter(getSupportFragmentManager(), getLifecycle());
+
+        ProfileFragment profileFragment = new ProfileFragment();
+        profileFragment.setArguments(userInfo);
+
+        adapter.addFragment(profileFragment, "Profile");
         adapter.addFragment(new MatchesFragment(), "Matches");
         adapter.addFragment(new SettingsFragment(), "Settings");
 
@@ -49,11 +53,41 @@ public class UserHome extends AppCompatActivity {
             }
         };
 
+
+
         new TabLayoutMediator(binding.tablayout, binding.viewpager, tabConfig).attach();
 
     }
 
+    public static class Adapter extends FragmentStateAdapter {
 
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        Adapter(FragmentManager fragmentManager, Lifecycle lifecycle) {
+            super(fragmentManager, lifecycle);
+        }
+
+        @NonNull
+        @Override
+        public Fragment createFragment(int position) {
+            return mFragmentList.get(position);
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+
+        @Override
+        public int getItemCount() {
+            return mFragmentList.size();
+        }
+    }
 
 
 }

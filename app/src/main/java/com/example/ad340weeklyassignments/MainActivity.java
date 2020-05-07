@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         userInfo.putString(Constants.KEY_DOB, birthday);
         userInfo.putInt(Constants.KEY_AGE, age);
 
-        Intent intent = new Intent(MainActivity.this, Profile.class);
+        Intent intent = new Intent(MainActivity.this, UserHome.class);
         intent.putExtras(userInfo);
         startActivity(intent);
     }
@@ -159,11 +159,5 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
     private boolean checkEmail(String email) {
         return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    public void goToUser(View view) {
-        Intent intent = new Intent(MainActivity.this, UserHome.class);
-        startActivity(intent);
-
     }
 }
