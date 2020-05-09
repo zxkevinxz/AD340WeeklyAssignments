@@ -74,6 +74,10 @@
     <string name="faved_msg">"You liked "</string>
     <string name="favWhite">white</string>
     <string name="favRed">red</string>
+    <string name="uTestMatchesName">Sleepy Lily</string>
+    <string name="fav_icon_set_content">" fav icon"</string>
+    <string name="uTestPommyFav">Pommy fav icon</string>
+    <string name="uTestToast">You liked Pommy!</string>
 
 
     <!-- unsorted -->

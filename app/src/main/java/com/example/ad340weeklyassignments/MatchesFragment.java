@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MatchesFragment extends Fragment {
+
+    final static String TAG = MatchesFragment.class.getSimpleName();
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -104,6 +107,11 @@ public class MatchesFragment extends Fragment {
             holder.description.setText(mDescription[position % mDescription.length]);
             holder.age.setText(age);
             holder.occupation.setText(mOccupation[position % mDescription.length]);
+
+            StringBuilder favContentDesc = new StringBuilder(holder.name.getText().toString());
+            favContentDesc.append(getString(R.string.fav_icon_set_content));
+            holder.favButton.setContentDescription(favContentDesc.toString());
+            Log.i(TAG, "onBindViewHolder: " + favContentDesc);
 
             StringBuilder onFavMsg = new StringBuilder();
             onFavMsg.append((String) getText(R.string.faved_msg)).append(holder.name.getText().toString()).append((String) getText(R.string.THANKS_EXCLAMATION));

@@ -1,40 +1,44 @@
 package com.example.ad340weeklyassignments;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Handler;
 import android.os.RemoteException;
-import android.util.Log;
+import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
 import androidx.test.espresso.action.ViewActions;
+import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
 
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static androidx.constraintlayout.widget.Constraints.TAG;
 import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.*;
+import static androidx.test.espresso.action.ViewActions.clearText;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.swipeRight;
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.contrib.PickerActions.setDate;
+import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
+import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static androidx.test.espresso.contrib.PickerActions.setDate;
-import static org.hamcrest.Matchers.allOf;
-
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.Matchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -44,6 +48,13 @@ public class MainActivityTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule
             = new ActivityScenarioRule<>(MainActivity.class);
+
+    private View decorView;
+
+    @Before
+    public void setUp() {
+        activityScenarioRule.getScenario().onActivity(activity -> decorView = activity.getWindow().getDecorView());
+    }
 
     @Test
     public void askForName() {
@@ -190,7 +201,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void tooYoung() {
+    public void underAge() {
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -303,11 +314,17 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
+        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(9));
+        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
+        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
+                .check(matches(isDisplayed()));
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
+        Thread.sleep(1000);
+        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
         Thread.sleep(1000);
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
