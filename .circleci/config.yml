@@ -88,6 +88,11 @@ references:
 
 jobs:
 
+  - build:
+    - branches:
+          - only:
+              - master
+
   # Build debug APK for unit tests and an instrumented test APK
 
   build_debug:
@@ -218,14 +223,6 @@ jobs:
 workflows:
   version: 2
   workflow:
-    jobs:
-      - build:
-          - jobs:
-              - tests:
-                  - filters:
-                      - branches:
-                          - only:
-                              - master
       - build_debug
       - build_release
       - test_unit
