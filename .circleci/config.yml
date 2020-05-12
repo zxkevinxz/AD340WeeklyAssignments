@@ -219,26 +219,10 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - build_debug:
-        filters:
-          branches:
-            only:
-              - master
-      - build_release:
-        filters:
-          branches:
-            only:
-              - master
-      - test_unit:
-        filters:
-          branches:
-            only:
-              - master
+      - build_debug
+      - build_release
+      - test_unit
       - test_instrumented:
-          filters:
-            branches:
-              only:
-                - master
           requires:
             - build_debug
       - report_coverage:
