@@ -88,11 +88,6 @@ references:
 
 jobs:
 
-  - build:
-    - branches:
-          - only:
-              - master
-
   # Build debug APK for unit tests and an instrumented test APK
 
   build_debug:
