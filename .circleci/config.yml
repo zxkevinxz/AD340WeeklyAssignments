@@ -219,6 +219,13 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - build:
+          - jobs:
+              - tests:
+                  - filters:
+                      - branches:
+                          - only:
+                              - master
       - build_debug
       - build_release
       - test_unit
