@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import java.util.List;
 public class UserHome extends AppCompatActivity {
 
     ActivityUserHomeBinding binding;
+    MatchesViewModel matchesViewModel;
 
     public static final String TAG = UserHome.class.getSimpleName();
 
@@ -33,16 +35,26 @@ public class UserHome extends AppCompatActivity {
         binding = ActivityUserHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
+
         Intent intent = getIntent();
         Bundle userInfo = intent.getExtras();
 
         Adapter adapter = new Adapter(getSupportFragmentManager(), getLifecycle());
 
         ProfileFragment profileFragment = new ProfileFragment();
+        MatchesFragment matchesFragment = new MatchesFragment();
         profileFragment.setArguments(userInfo);
 
+        Bundle matches = new Bundle();
+        matchesViewModel = new MatchesViewModel();
+        matchesViewModel.getMatchItems(
+                (ArrayList<MatchItem> matchItems) -> matches.putParcelableArrayList(Constants.KEY_MATCHES, matchItems)
+        );
+        matchesFragment.setArguments(matches);
+
         adapter.addFragment(profileFragment, "Profile");
-        adapter.addFragment(new MatchesFragment(), "Matches");
+        adapter.addFragment(matchesFragment, "Matches");
         adapter.addFragment(new SettingsFragment(), "Settings");
 
         binding.viewpager.setAdapter(adapter);

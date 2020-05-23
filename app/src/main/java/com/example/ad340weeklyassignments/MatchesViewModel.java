@@ -1,5 +1,7 @@
 package com.example.ad340weeklyassignments;
 
+import android.content.Context;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -30,4 +32,6 @@ public class MatchesViewModel {
     }
 
     public void clear() { model.clear(); }
+
+    public void updateLiked(MatchItem item) { model.updateLiked(item); }
 }

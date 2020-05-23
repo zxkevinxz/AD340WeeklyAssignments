@@ -1,39 +1,15 @@
 package com.example.ad340weeklyassignments;
 
-public class MatchItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MatchItem implements Parcelable {
 
     private String imageUrl;
-    private String lat;
-    private String lon;
     private String name;
     private boolean liked;
     private String uid;
     private String age;
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     private String occupation;
     private String description;
 
@@ -43,22 +19,6 @@ public class MatchItem {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getLat() {
-        return lat;
-    }
-
-    public void setLat(String lat) {
-        this.lat = lat;
-    }
-
-    public String getLon() {
-        return lon;
-    }
-
-    public void setLon(String lon) {
-        this.lon = lon;
     }
 
     public String getName() {
@@ -85,16 +45,39 @@ public class MatchItem {
         this.uid = uid;
     }
 
+    public String getAge() {
+        return age;
+    }
 
+    public void setAge(String age) {
+        this.age = age;
+    }
 
-    public MatchItem(String imageUrl, String lat, String lon, String name, boolean liked, String uid) {
-        this.imageUrl = imageUrl;
-        this.lat = lat;
-        this.lon = lon;
-        this.name = name;
-        this.liked = liked;
-        this.uid = uid;
+    public String getOccupation() {
+        return occupation;
+    }
+
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public MatchItem() { }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+    }
 }

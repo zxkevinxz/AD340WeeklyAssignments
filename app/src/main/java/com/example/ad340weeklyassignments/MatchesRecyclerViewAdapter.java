@@ -1,11 +1,7 @@
 package com.example.ad340weeklyassignments;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
@@ -24,15 +20,20 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
 
     private Context context;
     private ArrayList<MatchItem> matchItems;
+    public static final String TAG = MatchesRecyclerViewAdapter.class.getSimpleName();
+    public LikedClickListener listener;
 
-    public MatchesRecyclerViewAdapter (Context context) {
+    public MatchesRecyclerViewAdapter(Context context, ArrayList<MatchItem> matchItems, LikedClickListener listener) {
         this.context = context;
+        this.matchItems = matchItems;
+        this.listener = listener;
     }
+
 
     @NonNull
     @Override
     public MatchesItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MatchesItemViewHolder(LayoutInflater.from(parent.getContext()), parent, context);
+        return new MatchesItemViewHolder(LayoutInflater.from(parent.getContext()), parent);
     }
 
     @Override
@@ -44,10 +45,24 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
             holder.description.setText(match.getDescription());
             holder.occupation.setText(match.getOccupation());
             Picasso.get().load(match.getImageUrl()).into(holder.photo);
+            if (match.isLiked())
+                holder.favButton.setColorFilter(Color.RED);
 
             StringBuilder onFavMsg = new StringBuilder();
             onFavMsg.append((String) context.getText(R.string.faved_msg)).append(holder.name.getText().toString()).append((String) context.getText(R.string.THANKS_EXCLAMATION));
             holder.favMsg = onFavMsg.toString();
+
+            holder.favButton.setOnClickListener( v -> {
+                if (!match.isLiked()) {
+                    Toast.makeText(v.getContext(), holder.favMsg, Toast.LENGTH_SHORT).show();
+                    holder.favButton.setColorFilter(Color.RED);
+                    match.setLiked(true);
+                } else {
+                    holder.favButton.setColorFilter(Color.WHITE);
+                    match.setLiked(false);
+                }
+                listener.onLikedClicked(match);
+            });
         }
     }
 
@@ -59,10 +74,6 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
             return 0;
     }
 
-    void setMatchItems(ArrayList<MatchItem> items) {
-        this.matchItems = items;
-    }
-
     public static class MatchesItemViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView photo;
@@ -72,28 +83,16 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
         public TextView description;
         public ImageButton favButton;
         public String favMsg;
-        public String favColor;
 
-        public MatchesItemViewHolder(LayoutInflater inflater, ViewGroup parent, Context context) {
+        public MatchesItemViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.matches_fragment, parent, false));
+
             photo =  itemView.findViewById(R.id.matches_cv_image);
             name =  itemView.findViewById(R.id.matches_cv_name);
             occupation =  itemView.findViewById(R.id.matches_cv_occupation);
             age =  itemView.findViewById(R.id.matches_age);
             description =  itemView.findViewById(R.id.matches_cv_desc);
             favButton = itemView.findViewById(R.id.matches_fav);
-            favColor = context.getString(R.string.favWhite);
-            favButton.setOnClickListener(v -> {
-                if (favColor.equals(context.getString(R.string.favWhite))) {
-                    Toast.makeText(v.getContext(), favMsg, Toast.LENGTH_SHORT).show();
-                    favButton.setColorFilter(Color.RED);
-                    favColor = context.getString(R.string.favRed);
-                } else {
-                    favButton.setColorFilter(Color.WHITE);
-                    favColor = context.getString(R.string.favWhite);
-                }
-
-            });
         }
     }
 }

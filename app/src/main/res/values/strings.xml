@@ -78,6 +78,7 @@
     <string name="fav_icon_set_content">" fav icon"</string>
     <string name="uTestPommyFav">Pommy fav icon</string>
     <string name="uTestToast">You liked Pommy!</string>
+    <string name="run_time_exception_listener">\" must implement OnListFragmentInteractionListener\"</string>
 
 
     <!-- unsorted -->
