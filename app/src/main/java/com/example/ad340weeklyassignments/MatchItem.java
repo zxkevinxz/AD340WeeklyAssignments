@@ -12,10 +12,30 @@ public class MatchItem implements Parcelable {
     private String age;
     private String occupation;
     private String description;
-    private String lat;
-    private String lon;
 
     public MatchItem() { }
+
+    protected MatchItem(Parcel in) {
+        imageUrl = in.readString();
+        name = in.readString();
+        liked = in.readByte() != 0;
+        uid = in.readString();
+        age = in.readString();
+        occupation = in.readString();
+        description = in.readString();
+    }
+
+    public static final Creator<MatchItem> CREATOR = new Creator<MatchItem>() {
+        @Override
+        public MatchItem createFromParcel(Parcel in) {
+            return new MatchItem(in);
+        }
+
+        @Override
+        public MatchItem[] newArray(int size) {
+            return new MatchItem[size];
+        }
+    };
 
     public String getImageUrl() { return imageUrl; }
     public String getName() {
@@ -39,8 +59,7 @@ public class MatchItem implements Parcelable {
     public String getDescription() {
         return description;
     }
-    public String getLat() { return lat; }
-    public String getLon() { return lon; }
+
     @Override
     public int describeContents() { return 0; }
 

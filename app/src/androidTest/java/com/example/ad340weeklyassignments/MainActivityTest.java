@@ -353,18 +353,18 @@ public class MainActivityTest {
         Thread.sleep(1000);
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
         Thread.sleep(1000);
-        onView(withText("Cool Guy Mike"))
+        onView(withText(R.string.uTestMike))
                 .check(matches(isDisplayed()));
-        onView(withText("spaceman"))
+        onView(withText(context.getString(R.string.uTestMatchJob)))
                 .check(matches(isDisplayed()));
-        onView(withText("45"))
+        onView(withText(context.getString(R.string.uTestMatchAge)))
                 .check(matches(isDisplayed()));
-        onView(withContentDescription("Cool Guy Mike fav icon"))
+        onView(withContentDescription(context.getString(R.string.uTestFavIconDesc)))
                 .perform(click());
         onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
                 .check(matches(isDisplayed()));
         Thread.sleep(1500);
-        onView(withContentDescription("Cool Guy Mike fav icon"))
+        onView(withContentDescription(context.getString(R.string.uTestFavIconDesc)))
                 .perform(click());
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());

@@ -76,10 +76,12 @@
     <string name="favRed">red</string>
     <string name="uTestMatchesName">Sleepy Lily</string>
     <string name="fav_icon_set_content">" fav icon"</string>
-    <string name="uTestPommyFav">Mark the King fav icon</string>
+    <string name="uTestFavIconDesc">Cool Guy Mike fav icon</string>
     <string name="uTestToast">You liked Cool Guy Mike!</string>
     <string name="run_time_exception_listener">\" must implement OnListFragmentInteractionListener\"</string>
-    <string name="uTest_Mark">Mark the King</string>
+    <string name="uTestMike">Cool Guy Mike</string>
+    <string name="uTestMatchAge">45</string>
+    <string name="uTestMatchJob">spaceman</string>
 
 
     <!-- unsorted -->
