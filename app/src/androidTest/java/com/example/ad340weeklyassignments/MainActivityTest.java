@@ -328,19 +328,18 @@ public class MainActivityTest {
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(3));
-        onView(withText(context.getString(R.string.uTest_Mark)))
-                .check(matches(withText(context.getString(R.string.uTest_Mark))));
-//        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
-//        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
-//                .check(matches(isDisplayed()));
+        Thread.sleep(1000);
+        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
+        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
+                .check(matches(isDisplayed()));
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
         Thread.sleep(1000);
-//        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
-//        Thread.sleep(1000);
+        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
+        Thread.sleep(1000);
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));

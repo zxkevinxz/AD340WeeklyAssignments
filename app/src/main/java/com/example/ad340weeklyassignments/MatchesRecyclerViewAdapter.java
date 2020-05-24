@@ -52,6 +52,10 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesRecy
             onFavMsg.append((String) context.getText(R.string.faved_msg)).append(holder.name.getText().toString()).append((String) context.getText(R.string.THANKS_EXCLAMATION));
             holder.favMsg = onFavMsg.toString();
 
+            StringBuilder favBtnDesc = new StringBuilder();
+            favBtnDesc.append(match.getName()).append(context.getText(R.string.fav_icon_set_content));
+            holder.favButton.setContentDescription(favBtnDesc.toString());
+
             holder.favButton.setOnClickListener( v -> {
                 if (!match.isLiked()) {
                     Toast.makeText(v.getContext(), holder.favMsg, Toast.LENGTH_SHORT).show();
