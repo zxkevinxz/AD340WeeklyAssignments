@@ -328,7 +328,7 @@ public class MainActivityTest {
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(3));
-        Thread.sleep(1000);
+        Thread.sleep(4000);
         onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
         onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
                 .check(matches(isDisplayed()));
