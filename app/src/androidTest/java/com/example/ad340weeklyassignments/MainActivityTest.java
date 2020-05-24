@@ -66,7 +66,8 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noUsername() {
+    public void noUsername() throws InterruptedException {
+        Thread.sleep(5000);
         Espresso.closeSoftKeyboard();
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
@@ -84,8 +85,9 @@ public class MainActivityTest {
 
     }
     @Test
-    public void noFirstName() {
+    public void noFirstName() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(clearText());
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -102,8 +104,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void firstNameTooLong() {
+    public void firstNameTooLong() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(clearText());
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestNameLength)));
         onView(withId(R.id.lastName)).perform(clearText());
@@ -122,8 +125,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noLastName() {
+    public void noLastName() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(clearText());
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -140,8 +144,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void lastNameTooLong() {
+    public void lastNameTooLong() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestNameLength)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -158,8 +163,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void badEmail() {
+    public void badEmail() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestBadEmail)));
@@ -177,8 +183,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noEmail() {
+    public void noEmail() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(clearText());
@@ -196,8 +203,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noDate() {
+    public void noDate() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -212,8 +220,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void underAge() {
+    public void underAge() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -231,8 +240,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noOccupation() {
+    public void noOccupation() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -248,8 +258,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void badLengthOccupation() {
+    public void badLengthOccupation() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -266,8 +277,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void noDescription() {
+    public void noDescription() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -285,8 +297,9 @@ public class MainActivityTest {
 
 
     @Test
-    public void rotateDate() throws RemoteException {
+    public void rotateDate() throws RemoteException, InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.dob_button)).perform(click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
@@ -298,8 +311,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void rotateNoDate() throws RemoteException {
+    public void rotateNoDate() throws RemoteException, InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         UiDevice device = UiDevice.getInstance(getInstrumentation());
         device.setOrientationRight();
         onView(withId(R.id.dob)).check(matches(withText(context.getString(R.string.empty_dob))));
@@ -310,6 +324,7 @@ public class MainActivityTest {
     @Test
     public void testSuccessfulSignUp() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
@@ -355,8 +370,9 @@ public class MainActivityTest {
     }
 
     @Test
-    public void testScrollView() {
+    public void testScrollView() throws InterruptedException {
         Espresso.closeSoftKeyboard();
+        Thread.sleep(5000);
         onView(withId(R.id.firstName)).perform(typeText(context.getString(R.string.uTestFirstName)));
         onView(withId(R.id.lastName)).perform(typeText(context.getString(R.string.uTestLastName)));
         onView(withId(R.id.email)).perform(typeText(context.getString(R.string.uTestEmail)));
