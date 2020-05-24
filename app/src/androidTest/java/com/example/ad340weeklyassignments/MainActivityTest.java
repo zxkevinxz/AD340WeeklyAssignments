@@ -28,6 +28,7 @@ import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.PickerActions.setDate;
 import static androidx.test.espresso.matcher.RootMatchers.withDecorView;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static androidx.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
@@ -346,21 +347,31 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-//        Thread.sleep(5000);
-//        onView(withRecyclerView(R.id.recycler_view)
-//                .atPositionOnView(0, R.id.matches_fav))
-//                .perform(click());
-//        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
-//                .check(matches(isDisplayed()));
+        Thread.sleep(5000);
+        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPosition(4))
+                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPosition(4))
+                .check(matches(hasDescendant(withText("spaceman"))));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPosition(4))
+                .check(matches(hasDescendant(withText("45"))));
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(4, R.id.matches_fav))
+                .perform(click());
+        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
+                .check(matches(isDisplayed()));
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
-//        Thread.sleep(5000);
-//        onView(withRecyclerView(R.id.recycler_view)
-//                .atPositionOnView(0, R.id.matches_fav))
-//                .perform(click());
+        Thread.sleep(5000);
+        onView(withRecyclerView(R.id.recycler_view)
+                .atPositionOnView(4, R.id.matches_fav))
+                .perform(click());
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
