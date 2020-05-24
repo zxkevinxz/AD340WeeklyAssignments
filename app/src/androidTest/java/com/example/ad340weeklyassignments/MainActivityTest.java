@@ -332,13 +332,13 @@ public class MainActivityTest {
         onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
         onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
                 .check(matches(isDisplayed()));
+        Thread.sleep(1000);
+        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
-        Thread.sleep(1000);
-        onView(withContentDescription(context.getString(R.string.uTestPommyFav))).perform(click());
         Thread.sleep(1000);
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
