@@ -77,7 +77,7 @@
     <string name="uTestMatchesName">Sleepy Lily</string>
     <string name="fav_icon_set_content">" fav icon"</string>
     <string name="uTestPommyFav">Mark the King fav icon</string>
-    <string name="uTestToast">You liked Mark the King!</string>
+    <string name="uTestToast">You liked Overachiever Alex!</string>
     <string name="run_time_exception_listener">\" must implement OnListFragmentInteractionListener\"</string>
     <string name="uTest_Mark">Mark the King</string>
 

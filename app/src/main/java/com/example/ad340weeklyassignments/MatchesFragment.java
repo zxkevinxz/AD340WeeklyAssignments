@@ -31,13 +31,15 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
                              @Nullable Bundle savedInstanceState) {
 
         matchesViewModel = new MatchesViewModel();
-        RecyclerView recyclerView = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        View view = inflater.inflate(R.layout.recycler_view, container, false);
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+
         MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), matchItems, this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        return recyclerView;
+        return view;
     }
     @Override
     public void onPause() {
