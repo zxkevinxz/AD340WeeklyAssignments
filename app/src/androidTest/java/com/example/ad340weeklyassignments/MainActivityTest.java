@@ -338,6 +338,7 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
+        Thread.sleep(1500);
         onView(withId(R.id.profileDescription))
                 .check(matches(withText(context.getString(R.string.uTestDescription))));
         onView(withId(R.id.profileOccupation))
@@ -346,9 +347,10 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestFullName))));
         onView(withId(R.id.age))
                 .check(matches(withText(context.getString(R.string.uTestAge))));
+        Thread.sleep(1000);
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        Thread.sleep(1500);
+        Thread.sleep(1000);
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
         Thread.sleep(1000);
         onView(withText("Cool Guy Mike"))
