@@ -346,7 +346,7 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         onView(withRecyclerView(R.id.recycler_view)
                 .atPositionOnView(0, R.id.matches_fav))
                 .perform(click());
@@ -357,7 +357,7 @@ public class MainActivityTest {
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
-        Thread.sleep(1000);
+        Thread.sleep(5000);
         onView(withRecyclerView(R.id.recycler_view)
                 .atPositionOnView(0, R.id.matches_fav))
                 .perform(click());
