@@ -346,27 +346,24 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestAge))));
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        Thread.sleep(5000);
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(0, R.id.matches_fav))
-                .perform(click());
-        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
-                .check(matches(isDisplayed()));
+//        Thread.sleep(5000);
+//        onView(withRecyclerView(R.id.recycler_view)
+//                .atPositionOnView(0, R.id.matches_fav))
+//                .perform(click());
+//        onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
+//                .check(matches(isDisplayed()));
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
-        Thread.sleep(5000);
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(0, R.id.matches_fav))
-                .perform(click());
+//        Thread.sleep(5000);
+//        onView(withRecyclerView(R.id.recycler_view)
+//                .atPositionOnView(0, R.id.matches_fav))
+//                .perform(click());
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
-
-
-
     }
 
     @Test
