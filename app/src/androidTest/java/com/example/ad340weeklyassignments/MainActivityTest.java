@@ -351,32 +351,24 @@ public class MainActivityTest {
         Thread.sleep(1500);
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
         Thread.sleep(1000);
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPosition(4))
-                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPosition(4))
-                .check(matches(hasDescendant(withText("spaceman"))));
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPosition(4))
-                .check(matches(hasDescendant(withText("45"))));
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.matches_fav))
+        onView(withText("Cool Guy Mike"))
+                .check(matches(isDisplayed()));
+        onView(withText("spaceman"))
+                .check(matches(isDisplayed()));
+        onView(withText("45"))
+                .check(matches(isDisplayed()));
+        onView(withContentDescription("Cool Guy Mike fav icon"))
                 .perform(click());
         onView(withText(R.string.uTestToast)).inRoot(withDecorView(not(decorView)))
                 .check(matches(isDisplayed()));
         Thread.sleep(1500);
-        onView(withRecyclerView(R.id.recycler_view)
-                .atPositionOnView(4, R.id.matches_fav))
+        onView(withContentDescription("Cool Guy Mike fav icon"))
                 .perform(click());
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         onView(withId(R.id.settings))
                 .check(matches(withText(R.string.settings_text)));
         onView(withId(R.id.settings)).perform(swipeRight());
-        Thread.sleep(1500);
-        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
-
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))
                 .check(matches(withText("")));
