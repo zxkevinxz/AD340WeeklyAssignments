@@ -82,6 +82,17 @@
     <string name="uTestMike">Cool Guy Mike</string>
     <string name="uTestMatchAge">45</string>
     <string name="uTestMatchJob">spaceman</string>
+    <string name="gender_title">Gender</string>
+    <string name="set_gender_hint">set gender</string>
+    <string name="maximum_search_distance_miles">Maximum Search Distance (Miles)</string>
+    <string name="search_distance_hint">set search distance</string>
+    <string name="age_range_title">Age Range</string>
+    <string name="set_age_range_hint">set age range</string>
+    <string name="daily_matches_reminder_time">Daily Matches Reminder Time</string>
+    <string name="set_reminder_time_hint">set reminder time</string>
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_input">set privacy - public or private</string>
+    <string name="save_changes_settings">Save Changes</string>
 
 
     <!-- unsorted -->

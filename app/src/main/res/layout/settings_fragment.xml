@@ -1,16 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/settings"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/settings_text"
+        android:id="@+id/sGenderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/gender_title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
+    <EditText
+        android:id="@+id/sGenderInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/sGenderTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="@string/set_gender_hint"
+        tools:ignore="LabelFor"
+        />
+    <TextView
+        android:id="@+id/sDistanceTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/maximum_search_distance_miles"
+        app:layout_constraintTop_toBottomOf="@id/sGenderInput"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <EditText
+        android:id="@+id/sDistanceInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/sDistanceTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="@string/search_distance_hint"
+        tools:ignore="LabelFor"
+        />
+    <TextView
+        android:id="@+id/sAgeRangeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/age_range_title"
+        app:layout_constraintTop_toBottomOf="@id/sDistanceInput"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <EditText
+        android:id="@+id/sAgeRangeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/sAgeRangeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="@string/set_age_range_hint"
+        tools:ignore="LabelFor"
+        />
+    <TextView
+        android:id="@+id/sReminderTimeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/daily_matches_reminder_time"
+        app:layout_constraintTop_toBottomOf="@id/sAgeRangeInput"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <EditText
+        android:id="@+id/sReminderTimeInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/sReminderTimeTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="@string/set_reminder_time_hint"
+        tools:ignore="LabelFor"
+        />
+    <TextView
+        android:id="@+id/sPrivacyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="@string/privacy_title"
+        app:layout_constraintTop_toBottomOf="@id/sReminderTimeInput"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+    <EditText
+        android:id="@+id/sPrivacyInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/sPrivacyTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:autofillHints="@string/privacy_input"
+        tools:ignore="LabelFor"
+        />
+    <Button
+        android:id="@+id/save_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/save_changes_settings"
+        app:layout_constraintTop_toBottomOf="@id/sPrivacyInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,10 @@ public class UserHome extends AppCompatActivity {
 
         ProfileFragment profileFragment = new ProfileFragment();
         MatchesFragment matchesFragment = new MatchesFragment();
+        SettingsFragment settingsFragment = new SettingsFragment();
+
         profileFragment.setArguments(userInfo);
+        settingsFragment.setArguments(userInfo);
 
         Bundle matches = new Bundle();
         matchesViewModel = new MatchesViewModel();
@@ -55,7 +58,7 @@ public class UserHome extends AppCompatActivity {
 
         adapter.addFragment(profileFragment, "Profile");
         adapter.addFragment(matchesFragment, "Matches");
-        adapter.addFragment(new SettingsFragment(), "Settings");
+        adapter.addFragment(settingsFragment, "Settings");
 
         binding.viewpager.setAdapter(adapter);
 
