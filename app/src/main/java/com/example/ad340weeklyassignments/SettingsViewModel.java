@@ -1,34 +1,26 @@
 package com.example.ad340weeklyassignments;
 
-import android.app.Application;
 import android.content.Context;
 
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModel;
 
-public class SettingsViewModel extends AndroidViewModel {
+import java.util.List;
 
-    public SettingsViewModel(@NonNull Application application) {
-        super(application);
-    }
+public class SettingsViewModel extends ViewModel {
 
-    public Settings loadSettingsByEmail(Context context, String email) {
-        SettingsRoomDatabase db = SettingsDatabaseSingleton.getDatabase(context);
+    public LiveData<List<Settings>> loadSettingsByEmail(Context context, String[] email) {
+        System.out.println("loading settings");
+        SettingsRoomDatabase db = SettingsSingleton.getDatabase(context);
         return db.settingsDao().findSettingsByEmail(email);
     }
 
-    public void insertSettings(Context context, Settings settings) {
-        SettingsRoomDatabase db = SettingsDatabaseSingleton.getDatabase(context);
+    public void insertSettings(Context context, Settings... settings) {
+        System.out.println("inserting settings");
+        SettingsRoomDatabase db = SettingsSingleton.getDatabase(context);
         db.getTransactionExecutor().execute(() -> {
             db.settingsDao().insert(settings);
         });
     }
 
-    public void updateSettings(Context context, Settings settings) {
-        SettingsRoomDatabase db = SettingsDatabaseSingleton.getDatabase(context);
-        db.getTransactionExecutor().execute(() -> {
-            db.settingsDao().updateSettings(settings);
-        });
-    }
 }

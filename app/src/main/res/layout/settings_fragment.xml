@@ -94,7 +94,7 @@
         android:id="@+id/sPrivacyInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/sPrivacyTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="@string/privacy_input"

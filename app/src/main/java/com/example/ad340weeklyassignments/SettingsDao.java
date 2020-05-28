@@ -1,19 +1,20 @@
 package com.example.ad340weeklyassignments;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Dao;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Update;
 
+import java.util.List;
+
+@Dao
 public interface SettingsDao {
 
-    @Insert
-    void insert(Settings settings);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insert(Settings... settings);
 
-    @Query("SELECT * FROM settings_table where email = :email")
-    Settings findSettingsByEmail(String email);
-
-    @Update
-    void updateSettings(Settings settings);
+    @Query("SELECT * FROM settings where email = :email")
+    LiveData<List<Settings>> findSettingsByEmail(String[] email);
 
 }

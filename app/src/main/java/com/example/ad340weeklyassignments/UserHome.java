@@ -1,19 +1,14 @@
 package com.example.ad340weeklyassignments;
 
+import android.content.Intent;
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
-
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.ad340weeklyassignments.databinding.ActivityUserHomeBinding;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -25,8 +20,6 @@ public class UserHome extends AppCompatActivity {
 
     ActivityUserHomeBinding binding;
     MatchesViewModel matchesViewModel;
-
-    public static final String TAG = UserHome.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
