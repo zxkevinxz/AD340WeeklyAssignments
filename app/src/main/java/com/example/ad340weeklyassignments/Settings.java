@@ -17,9 +17,9 @@ public class Settings {
     public String getEmail() { return email; }
 
     @ColumnInfo(name = "reminder")
-    private int reminder = 0;
-    public int getReminder() { return reminder; }
-    public void setReminder(int reminder) { this.reminder = reminder; }
+    private String reminder = "No Reminder";
+    public String getReminder() { return reminder; }
+    public void setReminder(String reminder) { this.reminder = reminder; }
 
     @NonNull
     @ColumnInfo(name = "distance")

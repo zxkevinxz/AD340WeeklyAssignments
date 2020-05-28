@@ -368,8 +368,8 @@ public class MainActivityTest {
                 .perform(click());
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        onView(withId(R.id.settings))
-                .check(matches(withText(R.string.settings_text)));
+        onView(withId(R.id.sGenderTitle))
+                .check(matches(withText(R.string.gender_title)));
         onView(withId(R.id.settings)).perform(swipeRight());
         Espresso.pressBack();
         onView(withId(R.id.errorsMsg))

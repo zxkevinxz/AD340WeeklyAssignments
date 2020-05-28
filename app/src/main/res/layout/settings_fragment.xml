@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -14,11 +15,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <EditText
+    <Spinner
         android:id="@+id/sGenderInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/sGenderTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="@string/set_gender_hint"
@@ -38,6 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
+        android:hint="@string/distance_default"
         app:layout_constraintTop_toBottomOf="@+id/sDistanceTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="@string/search_distance_hint"
@@ -59,6 +60,7 @@
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/sAgeRangeTitle"
         app:layout_constraintStart_toStartOf="parent"
+        android:hint="@string/age_range_default"
         android:autofillHints="@string/set_age_range_hint"
         tools:ignore="LabelFor"
         />
@@ -71,11 +73,10 @@
         app:layout_constraintTop_toBottomOf="@id/sAgeRangeInput"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <EditText
+    <Spinner
         android:id="@+id/sReminderTimeInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
         app:layout_constraintTop_toBottomOf="@+id/sReminderTimeTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="@string/set_reminder_time_hint"
@@ -90,11 +91,10 @@
         app:layout_constraintTop_toBottomOf="@id/sReminderTimeInput"
         app:layout_constraintStart_toStartOf="parent"
         />
-    <EditText
+    <Spinner
         android:id="@+id/sPrivacyInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
         app:layout_constraintTop_toBottomOf="@+id/sPrivacyTitle"
         app:layout_constraintStart_toStartOf="parent"
         android:autofillHints="@string/privacy_input"

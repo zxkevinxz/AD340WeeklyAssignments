@@ -93,7 +93,49 @@
     <string name="privacy_title">Privacy</string>
     <string name="privacy_input">set privacy - public or private</string>
     <string name="save_changes_settings">Save Changes</string>
+    <string name="settings_saved_toast">Settings Saved</string>
+    <string name="gender_update_error">Please set a gender\n</string>
+    <string name="age_update_error">Age range must be between 0-99\n</string>
+    <string name="distance_update_error">Distance must be between 0-9999</string>
+    <string name="age_range_default">0</string>
+    <string name="distance_default">0</string>
 
+    <string-array name="gender_array">
+        <item />
+        <item>Female</item>
+        <item>Male</item>
+    </string-array>
+    <string-array name="privacy_array">
+        <item>Private</item>
+        <item>Public</item>
+    </string-array>
+    <string-array name="reminder_array">
+        <item>No Reminder</item>
+        <item>12:00 AM</item>
+        <item>01:00 AM</item>
+        <item>02:00 AM</item>
+        <item>03:00 AM</item>
+        <item>04:00 AM</item>
+        <item>05:00 AM</item>
+        <item>06:00 AM</item>
+        <item>07:00 AM</item>
+        <item>08:00 AM</item>
+        <item>09:00 AM</item>
+        <item>10:00 AM</item>
+        <item>11:00 AM</item>
+        <item>12:00 PM</item>
+        <item>01:00 PM</item>
+        <item>02:00 PM</item>
+        <item>03:00 PM</item>
+        <item>04:00 PM</item>
+        <item>05:00 PM</item>
+        <item>06:00 PM</item>
+        <item>07:00 PM</item>
+        <item>08:00 PM</item>
+        <item>09:00 PM</item>
+        <item>10:00 PM</item>
+        <item>11:00 PM</item>
+    </string-array>
 
     <!-- unsorted -->
 
