@@ -353,7 +353,7 @@ public class MainActivityTest {
         Thread.sleep(1000);
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
         Thread.sleep(1000);
-        onView(withText(R.string.uTestMike))
+        onView(withText(context.getString(R.string.uTestMike)))
                 .check(matches(isDisplayed()));
         onView(withText(context.getString(R.string.uTestMatchJob)))
                 .check(matches(isDisplayed()));
