@@ -99,6 +99,11 @@
     <string name="distance_update_error">Distance must be between 0-9999</string>
     <string name="age_range_default">0</string>
     <string name="distance_default">0</string>
+    <string name="genderTestMale">Male</string>
+    <string name="privacyTestPublic">Public</string>
+    <string name="ageRangeTest30">30</string>
+    <string name="distanceInputTest50">50</string>
+    <string name="reminderTimeTest12pm">12:00 PM</string>
 
     <string-array name="gender_array">
         <item />

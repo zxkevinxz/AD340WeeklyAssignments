@@ -20,6 +20,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -36,10 +37,14 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withSpinnerText;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.is;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -370,10 +375,36 @@ public class MainActivityTest {
                 .perform(click());
         onView(withId(R.id.sGenderTitle))
                 .check(matches(withText(R.string.gender_title)));
+        onView(withId(R.id.sGenderInput)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(context.getString(R.string.genderTestMale))))
+                .perform(click());
+        onView(withId(R.id.sPrivacyTitle))
+                .check(matches(withText(R.string.privacy_title)));
+        onView(withId(R.id.sPrivacyInput)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(context.getString(R.string.privacyTestPublic))))
+                .perform(click());
+        onView(withId(R.id.sAgeRangeInput))
+                .perform(typeText(context.getString(R.string.ageRangeTest30)));
+        onView(withId(R.id.sDistanceInput))
+                .perform(typeText(context.getString(R.string.distanceInputTest50)));
+        onView(withId(R.id.sReminderTimeInput)).perform(click());
+        onData(allOf(is(instanceOf(String.class)), is(context.getString(R.string.reminderTimeTest12pm))))
+                .perform(click());
+        onView(withId(R.id.save_settings)).perform(click());
+        onView(withText(R.string.settings_saved_toast)).inRoot(withDecorView(not(decorView)))
+                .check(matches(isDisplayed()));
+        onView(withId(R.id.sGenderInput))
+                .check(matches(withSpinnerText(containsString(context.getString(R.string.genderTestMale)))));
+        onView(withId(R.id.sPrivacyInput))
+                .check(matches(withSpinnerText(containsString(context.getString(R.string.privacyTestPublic)))));
+        onView(withId(R.id.sReminderTimeInput))
+                .check(matches(withSpinnerText(containsString(context.getString(R.string.reminderTimeTest12pm)))));
+        onView(withId(R.id.sDistanceInput))
+                .check(matches(withText(context.getString(R.string.distanceInputTest50))));
+        onView(withId(R.id.sAgeRangeInput))
+                .check(matches(withText(context.getString(R.string.ageRangeTest30))));
         onView(withId(R.id.settings)).perform(swipeRight());
         Espresso.pressBack();
-        onView(withId(R.id.errorsMsg))
-                .check(matches(withText("")));
     }
 
     @Test
