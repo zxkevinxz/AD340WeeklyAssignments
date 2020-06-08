@@ -12,6 +12,8 @@ public class MatchItem implements Parcelable {
     private String age;
     private String occupation;
     private String description;
+    private String lat;
+    private String lon;
 
     public MatchItem() { }
 
@@ -23,6 +25,8 @@ public class MatchItem implements Parcelable {
         age = in.readString();
         occupation = in.readString();
         description = in.readString();
+        lat = in.readString();
+        lon = in.readString();
     }
 
     public static final Creator<MatchItem> CREATOR = new Creator<MatchItem>() {
@@ -59,6 +63,8 @@ public class MatchItem implements Parcelable {
     public String getDescription() {
         return description;
     }
+    public String getLat() { return lat; }
+    public String getLon() { return lon; }
 
     @Override
     public int describeContents() { return 0; }

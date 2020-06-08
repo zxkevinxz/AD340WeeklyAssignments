@@ -104,6 +104,10 @@
     <string name="ageRangeTest30">30</string>
     <string name="distanceInputTest50">50</string>
     <string name="reminderTimeTest12pm">12:00 PM</string>
+    <string name="enable_location">Enable Location</string>
+    <string name="location_message">Your Locations Settings is set to \'Off\'. Please Enable Location to use this app</string>
+    <string name="location_settings">Location Settings</string>
+    <string name="location_cancel">Cancel</string>
 
     <string-array name="gender_array">
         <item />

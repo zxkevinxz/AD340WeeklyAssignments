@@ -50,10 +50,10 @@ task jacocoTestReport(type : JacocoReport, dependsOn : ['testDebugUnitTest']) {
         html.enabled = true
     }
 
-    classDirectories = files([javaClasses, kotlinClasses])
+    classDirectories.from = files([javaClasses, kotlinClasses])
 
-    sourceDirectories = files(coverageSourceDirs)
-    executionData     = fileTree(
+    sourceDirectories.from = files(coverageSourceDirs)
+    executionData.from     = fileTree(
             dir     : "$buildDir",
             include : [ 'jacoco/testDebugUnitTest.exec', 'outputs/code_coverage/debugAndroidTest/connected/*coverage.ec' ]
     )
@@ -76,10 +76,10 @@ task jacocoTestReportLocal(type : JacocoReport, dependsOn : ['testDebugUnitTest'
         html.enabled = true
     }
 
-    classDirectories = files([javaClasses, kotlinClasses])
+    classDirectories.from = files([javaClasses, kotlinClasses])
 
-    sourceDirectories = files(coverageSourceDirs)
-    executionData     = fileTree(
+    sourceDirectories.from = files(coverageSourceDirs)
+    executionData.from     = fileTree(
             dir     : "$buildDir",
             include : [ 'jacoco/testDebugUnitTest.exec', 'outputs/code_coverage/debugAndroidTest/connected/*coverage.ec' ]
     )

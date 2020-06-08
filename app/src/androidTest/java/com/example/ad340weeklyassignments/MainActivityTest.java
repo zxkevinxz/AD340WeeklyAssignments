@@ -356,7 +356,7 @@ public class MainActivityTest {
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         Thread.sleep(1000);
-        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
+        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(4));
         Thread.sleep(1000);
         onView(withText(context.getString(R.string.uTestMike)))
                 .check(matches(isDisplayed()));
