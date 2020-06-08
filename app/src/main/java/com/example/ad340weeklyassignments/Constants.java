@@ -13,4 +13,5 @@ public class Constants {
     static final String BLANK_SPACE = " ";
     static final String KEY_MATCHES = "matches";
     static final int VIEW_LENGTH = 10;
+    static final int DEFAULT_DISTANCE = 10;
 }

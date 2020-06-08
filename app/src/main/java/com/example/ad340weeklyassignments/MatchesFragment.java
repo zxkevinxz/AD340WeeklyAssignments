@@ -1,6 +1,7 @@
 package com.example.ad340weeklyassignments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,13 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         ArrayList<MatchItem> filteredList = new ArrayList<>();
 
         for (int i = 0; i < matchItems.size(); i++) {
-            if (distance(latitude, longitude, Double.parseDouble(matchItems.get(i).getLat()), Double.parseDouble(matchItems.get(i).getLon())) <= 10.0) {
+            if (distance(latitude, longitude, Double.parseDouble(matchItems.get(i).getLat()), Double.parseDouble(matchItems.get(i).getLon())) <= Constants.DEFAULT_DISTANCE) {
                 filteredList.add(matchItems.get(i));
             }
+        }
+
+        if (latitude == 0.0 && longitude == 0.0) {
+            filteredList.addAll(matchItems);
         }
 
         MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);

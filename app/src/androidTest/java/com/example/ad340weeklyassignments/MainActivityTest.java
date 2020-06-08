@@ -8,6 +8,7 @@ import android.widget.DatePicker;
 
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
@@ -344,6 +345,10 @@ public class MainActivityTest {
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
         Thread.sleep(1500);
+        try {
+            onView(withText(context.getString(R.string.cancel_location))).perform(click());
+        } catch (NoMatchingViewException ignored) {
+        }
         onView(withId(R.id.profileDescription))
                 .check(matches(withText(context.getString(R.string.uTestDescription))));
         onView(withId(R.id.profileOccupation))
@@ -356,7 +361,7 @@ public class MainActivityTest {
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
         Thread.sleep(1000);
-        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(4));
+        onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
         Thread.sleep(1000);
         onView(withText(context.getString(R.string.uTestMike)))
                 .check(matches(isDisplayed()));
