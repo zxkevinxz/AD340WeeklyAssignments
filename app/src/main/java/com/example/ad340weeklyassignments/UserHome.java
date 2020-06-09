@@ -13,6 +13,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -126,7 +127,8 @@ public class UserHome extends AppCompatActivity {
         dialog.setTitle(R.string.enable_location)
                 .setMessage(getString(R.string.location_message))
                 .setPositiveButton(R.string.location_settings, (paramDialogInterface, paramInt) -> {
-                    ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_CODE);
+                    Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivityForResult(myIntent, LOCATION_PERMISSION_CODE);
                 })
                 .setNegativeButton(R.string.location_cancel, (paramDialogInterface, paramInt) -> {
                 });
@@ -144,7 +146,14 @@ public class UserHome extends AppCompatActivity {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 showAlert();
             } else {
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_CODE);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+                dialog.setTitle(R.string.runtime_title)
+                        .setMessage(R.string.runtime_msg)
+                        .setPositiveButton(getString(R.string.runtime_app_perm), (paramDialogInterface, paramInt) -> {
+                            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_CODE);
+                        })
+                        .setNegativeButton(getString(R.string.cancel_runtime), (paramDialogInterface, paramInt) -> {
+                        });
             }
         }
     }
@@ -156,6 +165,13 @@ public class UserHome extends AppCompatActivity {
                 toggleNetworkUpdates();
             }
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == LOCATION_PERMISSION_CODE)
+            toggleNetworkUpdates();
     }
 
     private final LocationListener locationListenerNetwork = new LocationListener() {

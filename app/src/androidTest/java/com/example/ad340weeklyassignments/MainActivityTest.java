@@ -344,11 +344,11 @@ public class MainActivityTest {
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(setDate(1983, 2, 16));
         onView(withId(android.R.id.button1)).perform(click());
         onView(withId(R.id.submit)).perform(click());
+        Thread.sleep(1000);
         try {
             onView(withText(context.getString(R.string.cancel_location))).perform(click());
         } catch (NoMatchingViewException ignored) {
         }
-        Thread.sleep(1000);
         onView(withId(R.id.profileDescription))
                 .check(matches(withText(context.getString(R.string.uTestDescription))));
         onView(withId(R.id.profileOccupation))

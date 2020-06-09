@@ -109,6 +109,11 @@
     <string name="location_settings">Location Settings</string>
     <string name="location_cancel">Cancel</string>
     <string name="cancel_location">Cancel</string>
+    <string name="deny_location">Deny</string>
+    <string name="runtime_title">Enable App Permission</string>
+    <string name="runtime_msg">App needs location permission, please allow.</string>
+    <string name="runtime_app_perm">App Permissions</string>
+    <string name="cancel_runtime">Cancel</string>
 
     <string-array name="gender_array">
         <item />
