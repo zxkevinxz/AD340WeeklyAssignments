@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment implements LikedClickListener {
-    
+
     private MatchesViewModel matchesViewModel;
     private ArrayList<MatchItem> matchItems;
 
@@ -35,9 +35,11 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         double longitude = UserHome.getLongitudeNetwork();
 
         // for testing if FTL location is on, set long/lat to 0.0 like location is off
-        if (latitude == 37.422000885009766 && longitude == -122.08406066894531)
+        if (latitude == 37.422000885009766 && longitude == -122.08406066894531) {
             latitude = 0.0;
             longitude = 0.0;
+        }
+
 
         ArrayList<MatchItem> filteredList = new ArrayList<>();
 
@@ -48,7 +50,7 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         }
 
         // for no permissions load all
-        if (latitude == 0.0 && longitude == 0.0) {
+        if (latitude == 0.0) {
             filteredList.addAll(matchItems);
         }
 
