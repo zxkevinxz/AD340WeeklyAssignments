@@ -1,7 +1,6 @@
 package com.example.ad340weeklyassignments;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment implements LikedClickListener {
-
+    
     private MatchesViewModel matchesViewModel;
     private ArrayList<MatchItem> matchItems;
+    private ArrayList<MatchItem> filteredList;
+    private double latitude, longitude;
+    private boolean LOADING = true;
+    private MatchesRecyclerViewAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        filteredList = new ArrayList<>();
         if (getArguments() != null)
             matchItems = getArguments().getParcelableArrayList(Constants.KEY_MATCHES);
     }
@@ -31,17 +35,14 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         View view = inflater.inflate(R.layout.recycler_view, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
 
-        double latitude = UserHome.getLatitudeNetwork();
-        double longitude = UserHome.getLongitudeNetwork();
+        latitude = UserHome.getLatitudeNetwork();
+        longitude = UserHome.getLongitudeNetwork();
 
         // for testing if FTL location is on, set long/lat to 0.0 like location is off
         if (latitude == 37.422000885009766 && longitude == -122.08406066894531) {
             latitude = 0.0;
             longitude = 0.0;
         }
-
-
-        ArrayList<MatchItem> filteredList = new ArrayList<>();
 
         for (int i = 0; i < matchItems.size(); i++) {
             if (distance(latitude, longitude, Double.parseDouble(matchItems.get(i).getLat()), Double.parseDouble(matchItems.get(i).getLon())) <= Constants.DEFAULT_DISTANCE) {
@@ -50,16 +51,32 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         }
 
         // for no permissions load all
-        if (latitude == 0.0) {
+        if (latitude == 0.0 && longitude == 0.0) {
             filteredList.addAll(matchItems);
         }
 
-        MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);
+        adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         return view;
+    }
+
+    void update() {
+        if (LOADING) {
+            LOADING = false;
+        } else {
+            latitude = UserHome.getLatitudeNetwork();
+            longitude = UserHome.getLongitudeNetwork();
+            filteredList.clear();
+            for (int i = 0; i < matchItems.size(); i++) {
+                if (distance(latitude, longitude, Double.parseDouble(matchItems.get(i).getLat()), Double.parseDouble(matchItems.get(i).getLon())) <= Constants.DEFAULT_DISTANCE) {
+                    filteredList.add(matchItems.get(i));
+                }
+            }
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

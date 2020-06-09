@@ -1,7 +1,6 @@
 package com.example.ad340weeklyassignments;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,7 +9,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +35,7 @@ public class UserHome extends AppCompatActivity {
     LocationManager locationManager;
     static double longitudeNetwork, latitudeNetwork;
     private int LOCATION_PERMISSION_CODE = 1;
+    private MatchesFragment matchesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class UserHome extends AppCompatActivity {
         toggleNetworkUpdates();
 
         ProfileFragment profileFragment = new ProfileFragment();
-        MatchesFragment matchesFragment = new MatchesFragment();
+        matchesFragment = new MatchesFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
 
         profileFragment.setArguments(userInfo);
@@ -180,6 +179,7 @@ public class UserHome extends AppCompatActivity {
         public void onLocationChanged(Location location) {
             longitudeNetwork = location.getLongitude();
             latitudeNetwork = location.getLatitude();
+            matchesFragment.update();
         }
 
         @Override
