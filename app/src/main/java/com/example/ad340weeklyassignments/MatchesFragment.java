@@ -45,6 +45,8 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
 
         if (latitude == 0.0 && longitude == 0.0) {
             filteredList.addAll(matchItems);
+        } else if (filteredList.size() == 0) {
+            filteredList.addAll(matchItems);
         }
 
         MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);
