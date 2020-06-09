@@ -154,6 +154,7 @@ public class UserHome extends AppCompatActivity {
                         })
                         .setNegativeButton(getString(R.string.cancel_runtime), (paramDialogInterface, paramInt) -> {
                         });
+                dialog.show();
             }
         }
     }

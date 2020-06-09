@@ -34,8 +34,7 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
 
         double latitude = UserHome.getLatitudeNetwork();
         double longitude = UserHome.getLongitudeNetwork();
-        System.out.println(latitude);
-        System.out.println(longitude);
+
         ArrayList<MatchItem> filteredList = new ArrayList<>();
 
         for (int i = 0; i < matchItems.size(); i++) {
@@ -44,11 +43,14 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
             }
         }
 
+        // for no permissions load all
         if (latitude == 0.0 && longitude == 0.0) {
             filteredList.addAll(matchItems);
-        } else if (filteredList.size() == 0) {
-            filteredList.addAll(matchItems);
         }
+
+        // for testing load all if location is on in FTL
+        if (latitude == 37.422000885009766 && longitude == -122.08406066894531)
+            filteredList.addAll(matchItems);
 
         MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);
 
