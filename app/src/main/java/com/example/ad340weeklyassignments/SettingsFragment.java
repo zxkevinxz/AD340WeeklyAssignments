@@ -111,7 +111,7 @@ public class SettingsFragment extends Fragment {
 
             if (errors.size() > 0) {
                 String errorToast = String.join("", errors);
-                Toast.makeText(v.getContext(), errorToast, Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), errorToast, Toast.LENGTH_SHORT).show();
             } else {
                 settingsViewModel.insertSettings(view.getContext(), settings);
                 Toast.makeText(v.getContext(), R.string.settings_saved_toast, Toast.LENGTH_SHORT).show();

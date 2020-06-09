@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment implements LikedClickListener {
-    
+
     private MatchesViewModel matchesViewModel;
     private ArrayList<MatchItem> matchItems;
     private ArrayList<MatchItem> filteredList;

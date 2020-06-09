@@ -114,6 +114,8 @@
     <string name="runtime_msg">App needs location permission, please allow.</string>
     <string name="runtime_app_perm">App Permissions</string>
     <string name="cancel_runtime">Cancel</string>
+    <string name="range_too_high">100000</string>
+    <string name="settings_errors">Please set a gender\nAge range must be between 0-99\nDistance must be between 0-9999</string>
 
     <string-array name="gender_array">
         <item />

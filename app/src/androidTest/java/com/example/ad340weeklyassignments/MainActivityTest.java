@@ -378,6 +378,16 @@ public class MainActivityTest {
                 .perform(click());
         onView(allOf(withText("SETTINGS"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
+        onView(withId(R.id.save_settings)).perform(click());
+        Thread.sleep(2000);
+        onView(withId(R.id.sAgeRangeInput))
+                .perform(typeText(context.getString(R.string.range_too_high)));
+        onView(withId(R.id.sDistanceInput))
+                .perform(typeText(context.getString(R.string.range_too_high)));
+        onView(withId(R.id.save_settings)).perform(click());
+        onView(withText(context.getString(R.string.settings_errors))).inRoot(withDecorView(not(decorView)))
+                .check(matches(isDisplayed()));
+        Thread.sleep(2000);
         onView(withId(R.id.sGenderTitle))
                 .check(matches(withText(R.string.gender_title)));
         onView(withId(R.id.sGenderInput)).perform(click());
@@ -389,7 +399,11 @@ public class MainActivityTest {
         onData(allOf(is(instanceOf(String.class)), is(context.getString(R.string.privacyTestPublic))))
                 .perform(click());
         onView(withId(R.id.sAgeRangeInput))
+                .perform(clearText());
+        onView(withId(R.id.sAgeRangeInput))
                 .perform(typeText(context.getString(R.string.ageRangeTest30)));
+        onView(withId(R.id.sDistanceInput))
+                .perform(clearText());
         onView(withId(R.id.sDistanceInput))
                 .perform(typeText(context.getString(R.string.distanceInputTest50)));
         onView(withId(R.id.sReminderTimeInput)).perform(click());
