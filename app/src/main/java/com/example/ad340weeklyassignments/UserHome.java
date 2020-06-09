@@ -54,6 +54,7 @@ public class UserHome extends AppCompatActivity {
         ProfileFragment profileFragment = new ProfileFragment();
         matchesFragment = new MatchesFragment();
         SettingsFragment settingsFragment = new SettingsFragment();
+        settingsFragment.matchesFragment = matchesFragment;
 
         profileFragment.setArguments(userInfo);
         settingsFragment.setArguments(userInfo);

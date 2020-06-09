@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
-public class MatchesFragment extends Fragment implements LikedClickListener {
+public class MatchesFragment extends Fragment implements LikedClickListener, Updatable {
 
     private MatchesViewModel matchesViewModel;
     private ArrayList<MatchItem> matchItems;
@@ -98,5 +98,16 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         dist = Math.toDegrees(dist);
         dist = dist * 60 * 1.1515;
         return (dist);
+    }
+
+    @Override
+    public void onDistanceUpdate(int distance) {
+        filteredList.clear();
+        for (int i = 0; i < matchItems.size(); i++) {
+            if (distance(latitude, longitude, Double.parseDouble(matchItems.get(i).getLat()), Double.parseDouble(matchItems.get(i).getLon())) <= distance) {
+                filteredList.add(matchItems.get(i));
+            }
+        }
+        adapter.notifyDataSetChanged();
     }
 }

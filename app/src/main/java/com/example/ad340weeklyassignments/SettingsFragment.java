@@ -20,13 +20,13 @@ import java.util.List;
 
 public class SettingsFragment extends Fragment {
 
-
     Spinner gender;
     EditText ageRange;
     EditText distance;
     Spinner reminder;
     Spinner privacy;
     Button save;
+    MatchesFragment matchesFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class SettingsFragment extends Fragment {
             reminder.setSelection(reminderAdapter.getPosition(settings.getReminder()));
             ageRange.setHint(Integer.toString(settings.getAgeRange()));
             distance.setHint(Integer.toString(settings.getDistance()));
-
+            matchesFragment.onDistanceUpdate(settings.getDistance());
         };
 
         save.setOnClickListener(v -> {
