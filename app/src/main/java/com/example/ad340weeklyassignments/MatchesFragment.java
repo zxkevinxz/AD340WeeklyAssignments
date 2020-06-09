@@ -13,8 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class MatchesFragment extends Fragment implements LikedClickListener {
-
-    final static String TAG = MatchesFragment.class.getSimpleName();
+    
     private MatchesViewModel matchesViewModel;
     private ArrayList<MatchItem> matchItems;
 
@@ -35,8 +34,10 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         double latitude = UserHome.getLatitudeNetwork();
         double longitude = UserHome.getLongitudeNetwork();
 
-        System.out.println(latitude);
-        System.out.println(longitude);
+        // for testing if FTL location is on, set long/lat to 0.0 like location is off
+        if (latitude == 37.422000885009766 && longitude == -122.08406066894531)
+            latitude = 0.0;
+            longitude = 0.0;
 
         ArrayList<MatchItem> filteredList = new ArrayList<>();
 
@@ -50,10 +51,6 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         if (latitude == 0.0 && longitude == 0.0) {
             filteredList.addAll(matchItems);
         }
-
-        // for testing load all if location is on in FTL
-        if (latitude == 37.422000885009766 && longitude == -122.08406066894531)
-            filteredList.addAll(matchItems);
 
         MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(recyclerView.getContext(), filteredList, this);
 
@@ -76,16 +73,11 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
 
     // distance calculator from https://www.geodatasource.com/developers/java
     private static double distance(double lat1, double lon1, double lat2, double lon2) {
-        if ((lat1 == lat2) && (lon1 == lon2)) {
-            return 0;
-        }
-        else {
-            double theta = lon1 - lon2;
-            double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
-            dist = Math.acos(dist);
-            dist = Math.toDegrees(dist);
-            dist = dist * 60 * 1.1515;
-            return (dist);
-        }
+        double theta = lon1 - lon2;
+        double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
+        dist = Math.acos(dist);
+        dist = Math.toDegrees(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
     }
 }
