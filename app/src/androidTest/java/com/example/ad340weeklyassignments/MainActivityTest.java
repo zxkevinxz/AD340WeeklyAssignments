@@ -357,12 +357,12 @@ public class MainActivityTest {
                 .check(matches(withText(context.getString(R.string.uTestFullName))));
         onView(withId(R.id.age))
                 .check(matches(withText(context.getString(R.string.uTestAge))));
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         onView(allOf(withText("MATCHES"), isDescendantOfA(withId(R.id.tablayout))))
                 .perform(click());
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         onView(withId(R.id.recycler_view)).perform(RecyclerViewActions.scrollToPosition(5));
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         onView(withText(context.getString(R.string.uTestMike)))
                 .check(matches(isDisplayed()));
         onView(withText(context.getString(R.string.uTestMatchJob)))
