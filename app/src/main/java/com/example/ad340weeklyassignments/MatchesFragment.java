@@ -35,6 +35,9 @@ public class MatchesFragment extends Fragment implements LikedClickListener {
         double latitude = UserHome.getLatitudeNetwork();
         double longitude = UserHome.getLongitudeNetwork();
 
+        System.out.println(latitude);
+        System.out.println(longitude);
+
         ArrayList<MatchItem> filteredList = new ArrayList<>();
 
         for (int i = 0; i < matchItems.size(); i++) {
